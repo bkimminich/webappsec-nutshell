@@ -68,20 +68,45 @@
 
                 <section>
                     <section>
-                        <h2>SQL Injection</h2>
+                        <h2>Injection</h2>
                     </section>
                     <section>
-                        <h2></h2>
-                        <ul>
-                            <li></li>
-                        </ul>
+                        <h3>Injection means...</h3>
+                        <p>
+                            ...tricking an application into including unintended commands in the data sent to an interpreter.
+                        </p>
                     </section>
                     <section>
-                        <h2></h2>
+                        <h3>Interpreter means...</h3>
+                        <p>
+                            ...a program that takes a <code data-trim contenteditable>String</code> and interprets it as a command.
+                        </p>
+                    </section>
+                    <section>
+                        <h3>Interpreters are used for...</h3>
                         <ul>
-                            <li></li>
+                            <li>SQL</li>
+                            <li>HQL</li>
+                            <li>OS Shell</li>
+                            <li>LDAP</li>
+                            <li>XPath</li>
+                            <li>...</li>
                         </ul>
                     </section>
+                </section>
+
+                <section>
+                    <h3>Bypassing Authentication</h3>
+                    <h5>with SQL Injection</h5>
+                    <pre><code data-trim>
+String query = "SELECT id FROM users " +
+               "WHERE name = '" + req.getParameter("username") + "'" +
+               "AND password = '" + req.getParameter("password") + "'";
+                    </code></pre>
+                    <p>The indented use case results in a query like this:</p>
+                    <pre><code data-trim contenteditable>
+SELECT id FROM users WHERE name = 'bjoern' AND password = 'secret'
+                    </code></pre>
                 </section>
 
                 <section>
@@ -89,13 +114,13 @@
                         <h2>Cross Site Scripting (XSS)</h2>
                     </section>
                     <section>
-                        <h2></h2>
+                        <h3></h3>
                         <ul>
                             <li></li>
                         </ul>
                     </section>
                     <section>
-                        <h2></h2>
+                        <h3></h3>
                         <ul>
                             <li></li>
                         </ul>
@@ -107,13 +132,13 @@
                         <h2>Cross Site Request Forgery (CSRF)</h2>
                     </section>
                     <section>
-                        <h2></h2>
+                        <h3></h3>
                         <ul>
                             <li></li>
                         </ul>
                     </section>
                     <section>
-                        <h2></h2>
+                        <h3></h3>
                         <ul>
                             <li></li>
                         </ul>
@@ -125,13 +150,13 @@
                         <h2>Broken Authentication</h2>
                     </section>
                     <section>
-                        <h2></h2>
+                        <h3></h3>
                         <ul>
                             <li></li>
                         </ul>
                     </section>
                     <section>
-                        <h2></h2>
+                        <h3></h3>
                         <ul>
                             <li></li>
                         </ul>
@@ -143,13 +168,13 @@
                         <h2>Broken Access Control</h2>
                     </section>
                     <section>
-                        <h2></h2>
+                        <h3></h3>
                         <ul>
                             <li></li>
                         </ul>
                     </section>
                     <section>
-                        <h2></h2>
+                        <h3></h3>
                         <ul>
                             <li></li>
                         </ul>
@@ -161,13 +186,13 @@
                         <h2>Broken Ecosystem</h2>
                     </section>
                     <section>
-                        <h2></h2>
+                        <h3></h3>
                         <ul>
                             <li></li>
                         </ul>
                     </section>
                     <section>
-                        <h2></h2>
+                        <h3></h3>
                         <ul>
                             <li></li>
                         </ul>
