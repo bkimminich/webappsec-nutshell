@@ -125,18 +125,68 @@ SELECT id FROM users WHERE name = '' or 1=1--' AND password = '?'
 
                 <section>
                     <section>
+                        <h3>Spying out Data</h3>
+                        <h5>with SQL Injection</h5>
+                        <pre><code data-trim>
+String query =
+            "SELECT id,author,title,price FROM books " +
+            "WHERE title LIKE '%" + req.getParameter("query") + "%'";
+                        </code></pre>
+                        <p>The indented use case results in a query like this:</p>
+                        <pre><code data-trim contenteditable>
+SELECT id,author,title,price FROM books WHERE title LIKE '%tangled web%'
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Attack Examples</h3>
+                        <h5>on data retrieval queries</h5>
+                        <p>Probing for right number of result set columns:</p>
+                        <pre><code data-trim contenteditable>
+SELECT [...] WHERE title LIKE '%' UNION SELECT 1 FROM users--%'
+SELECT [...] WHERE title LIKE '%' UNION SELECT 1,1 FROM users--%'
+SELECT [...] WHERE title LIKE '%' UNION SELECT 1,1,1 FROM users--%'
+SELECT [...] WHERE title LIKE '%' UNION SELECT 1,1,1,1 FROM users--%'
+                        </code></pre>
+                        <p>Using known column names to extract data:</p>
+                        <pre><code data-trim contenteditable>
+SELECT [...] WHERE title LIKE '%' UNION SELECT null,name,password FROM users--%'
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h3>Preventing Injection</h3>
+                    <ul>
+                        <li>Avoid Interpreters</li>
+                        <li>Bind Variables</li>
+                        <li>Prepared Statements</li>
+                        <li>Least Privileges for app DB user</li>
+                        <li>White List Input Validation</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <section>
                         <h2>Cross Site Scripting (XSS)</h2>
                     </section>
                     <section>
-                        <h3></h3>
+                        <h3>Malicious Code is sent...</h3>
+                        <p>
+                            ...to an innocent user's browser through
+                        </p>
                         <ul>
-                            <li></li>
+                            <li>a form field or URL (Reflected XSS)</li>
+                            <li>a previously stored DB record (Persistent XSS)</li>
+                            <li>a DOM element of a rich JS client (Local XSS)</li>
                         </ul>
                     </section>
                     <section>
-                        <h3></h3>
+                        <h3>Possible Damage from XSS</h3>
                         <ul>
-                            <li></li>
+                            <li>stolen user session</li>
+                            <li>stolen sensitive data</li>
+                            <li>rewriting web page</li>
+                            <li>redirecting to malicious site</li>
                         </ul>
                     </section>
                 </section>
