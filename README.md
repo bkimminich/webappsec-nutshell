@@ -23,7 +23,7 @@ An ultra-compact intro (or refresher) to Web Application Security derived from m
 
 ### ...for those who are happy with just a PDF
 
-1. <http://de.slideshare.net/BjrnKimminich/web-application-security-in-a-nutshell>
+1. Open <http://slideshare.net/BjrnKimminich/web-application-security-in-a-nutshell>
 
 ## Credits
 
