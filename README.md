@@ -21,6 +21,10 @@ An ultra-compact intro (or refresher) to Web Application Security derived from m
 6. ```$ grunt serve```
 7. Open <http://localhost:8000> to view the presentation
 
+### ...for those who are happy with just a PDF
+
+1. <http://de.slideshare.net/BjrnKimminich/web-application-security-in-a-nutshell>
+
 ## Credits
 
 - Presentation created with [reveal.js](https://github.com/hakimel/reveal.js)
