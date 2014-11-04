@@ -42,27 +42,35 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section>
-					<h1>Web Application Security</h1>
-                    <h2>in a nutshell</h2>
-					<h5>An ultra-compact intro (or refresher) to Web Application Security</h5>
-					<p>
-						<small>Created by <a href="http://kimminich.de">Björn Kimminich</a> / <a href="http://twitter.com/bkimminich">@bkimminich</a></small>
-					</p>
-				</section>
+                <section>
+                    <section>
+                        <h1>Web Application Security</h1>
+                        <h2>in a nutshell</h2>
+                        <h5>An ultra-compact intro (or refresher) to Web Application Security</h5>
+                        <p>
+                            <small>Created by <a href="http://kimminich.de">Björn Kimminich</a> / <a href="http://twitter.com/bkimminich">@bkimminich</a></small>
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Björn Kimminich</h2>
+                        <ul>
+                            <li>Application Security Officer at <a href="http://kuehne-nagel.com">Kuehne + Nagel (AG & Co.) KG</a></li>
+                            <li>Author of open-source pentest training webapp <a href="https://github.com/bkimminich/juice-shop">juice-shop</a></li>
+                            <li><a href="https://owasp.org">OWASP</a> member and <a href="https://code.google.com/p/zaproxy/">OWASP Zed Attack Proxy</a> contributor</li>
+                        </ul>
+                    </section>
+                </section>
 
 				<section>
-					<h2>Björn Kimminich</h2>
-                    <ul>
-                        <li>Application Security Officer at <a href="http://kuehne-nagel.com">Kuehne + Nagel (AG & Co.) KG</a></li>
-                        <li>Author of pentest training webapp <a href="https://github.com/bkimminich/juice-shop">juice-shop</a></li>
-                        <li><a href="https://owasp.org">OWASP</a> member and project contributor</li>
-                    </ul>
-				</section>
-
-				<section>
+                    <h2>Famous last words</h2>
                     <blockquote>
-                        &ldquo;What's the worst thing that could happen?&rdquo;
+                        &ldquo;Why would anybody bother to hack us?&rdquo;
+                    </blockquote>
+                    <blockquote>
+                        &ldquo;We have a Firewall and IPS to keep us safe.&rdquo;
+                    </blockquote>
+                    <blockquote>
+                        &ldquo;What's the worst thing that could actually happen?&rdquo;
                     </blockquote>
                 </section>
 
@@ -211,6 +219,15 @@ SELECT [...] WHERE title LIKE '%' UNION SELECT null,name,password FROM users--%'
 
                 <section>
                     <section>
+                        <h2>CSRF Attack Examples</h2>
+                        <img src="http://127.0.0.1/api/user/1/delete" width="200" height="300">
+                        <img src="http://router.box/admin/reset" width="200" height="300">
+                        <img src="http://myfor.um/logout.php" width="200" height="300">
+                    </section>
+                </section>
+
+                <section>
+                    <section>
                         <h2>Broken Authentication</h2>
                     </section>
                     <section>
@@ -232,17 +249,37 @@ SELECT [...] WHERE title LIKE '%' UNION SELECT null,name,password FROM users--%'
                         <h2>Broken Access Control</h2>
                     </section>
                     <section>
-                        <h3></h3>
+                        <h3>Common Authorization Mistakes</h3>
                         <ul>
-                            <li></li>
+                            <li>Hiding object references instead of restricting access</li>
+                            <li>Displaying only authorized links and menu choices</li>
+                            <li>Trusting client-side access control mechanisms</li>
+                            <li>Lack of server-side verification of user privileges</li>
                         </ul>
                     </section>
-                    <section>
-                        <h3></h3>
-                        <ul>
-                            <li></li>
-                        </ul>
-                    </section>
+                </section>
+
+                <section>
+                    <h3>Tampering for Access Control Issues</h3>
+                        <pre><code data-trim contenteditable>
+http://logistics-worldwi.de/showShipment?id=40643108
+                        </code></pre>
+                        <pre><code data-trim contenteditable>
+http://my-universi.ty/api/students/6503/exams/view
+                        </code></pre>
+                        <pre><code data-trim contenteditable>
+http://cheap-sh.op?content=index.html
+                        </code></pre>
+                </section>
+
+                <section>
+                    <h3>Securing Authorization</h3>
+                    <ul>
+                        <li>Never rely on <q>&ldquo;Security by obscurity&rdquo;</q></li>
+                        <li>Replace direct object references with temporary mappings</li>
+                        <li>Restrict data and functionality access to authorized users</li>
+                        <li>Enforce user or role based permissions</li>
+                    </ul>
                 </section>
 
                 <section>
