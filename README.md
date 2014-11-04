@@ -28,6 +28,8 @@ An ultra-compact intro (or refresher) to Web Application Security derived from m
 ## Credits
 
 - Presentation created with [reveal.js](https://github.com/hakimel/reveal.js)
+- Based on free material provided by the [Open Web Application Security Project (OWASP)](https://owasp.org)
+- Background image based on [Digital Shodan](http://sephiroth-kmfdm.deviantart.com/art/Digital-Shodan-56013493) by [sephiroth-kmfdm](http://sephiroth-kmfdm.deviantart.com/)
 
 ## License
 
