@@ -1,4 +1,4 @@
-# Web Applicatio Security in a nutshell [![Build Status](https://travis-ci.org/bkimminich/webappsec-nutshell.png?branch=master)](https://travis-ci.org/bkimminich/webappsec-nutshell)
+# Web Application Security in a nutshell [![Build Status](https://travis-ci.org/bkimminich/webappsec-nutshell.png?branch=master)](https://travis-ci.org/bkimminich/webappsec-nutshell)
 
 An ultra-compact intro (or refresher) to Web Application Security derived from my [Web Application Security Training Workshop](http://de.slideshare.net/BjrnKimminich/web-application-security-21684264). 
 
