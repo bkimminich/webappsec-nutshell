@@ -107,13 +107,13 @@
                     <section>
                         <h3>Bypassing Authentication</h3>
                         <h5>with SQL Injection</h5>
-                        <pre><code data-trim>
+                        <pre><code class="java" data-trim>
 String query = "SELECT id FROM users " +
                "WHERE name = '" + req.getParameter("username") + "'" +
                "AND password = '" + req.getParameter("password") + "'";
                         </code></pre>
                         <p>The indented use case results in a query like this:</p>
-                        <pre><code data-trim contenteditable>
+                        <pre><code class="sql" data-trim contenteditable>
 SELECT id FROM users WHERE name = 'bjoern' AND password = 'secret'
                         </code></pre>
                     </section>
@@ -121,11 +121,11 @@ SELECT id FROM users WHERE name = 'bjoern' AND password = 'secret'
                         <h3>Attack Examples</h3>
                         <h5>on authentication queries</h5>
                         <p>Disabling password check for a known username:</p>
-                        <pre><code data-trim contenteditable>
+                        <pre><code class="sql" data-trim contenteditable>
 SELECT id FROM users WHERE name = 'bjoern'--' AND password = '?'
                         </code></pre>
                         <p>Logging in without even knowing a username:</p>
-                        <pre><code data-trim contenteditable>
+                        <pre><code class="sql" data-trim contenteditable>
 SELECT id FROM users WHERE name = '' or 1=1--' AND password = '?'
                         </code></pre>
                     </section>
@@ -135,13 +135,13 @@ SELECT id FROM users WHERE name = '' or 1=1--' AND password = '?'
                     <section>
                         <h3>Spying out Data</h3>
                         <h5>with SQL Injection</h5>
-                        <pre><code data-trim>
+                        <pre><code class="java" data-trim>
 String query =
             "SELECT id,author,title,price FROM books " +
             "WHERE title LIKE '%" + req.getParameter("query") + "%'";
                         </code></pre>
                         <p>The indented use case results in a query like this:</p>
-                        <pre><code data-trim contenteditable>
+                        <pre><code class="sql" data-trim contenteditable>
 SELECT id,author,title,price FROM books WHERE title LIKE '%tangled web%'
                         </code></pre>
                     </section>
@@ -149,28 +149,32 @@ SELECT id,author,title,price FROM books WHERE title LIKE '%tangled web%'
                         <h3>Attack Examples</h3>
                         <h5>on data retrieval queries</h5>
                         <p>Probing for right number of result set columns:</p>
-                        <pre><code data-trim contenteditable>
-SELECT [...] WHERE title LIKE '%' UNION SELECT 1 FROM users--%'
-SELECT [...] WHERE title LIKE '%' UNION SELECT 1,1 FROM users--%'
-SELECT [...] WHERE title LIKE '%' UNION SELECT 1,1,1 FROM users--%'
-SELECT [...] WHERE title LIKE '%' UNION SELECT 1,1,1,1 FROM users--%'
+                        <pre><code class="sql" data-trim>
+SELECT [...] WHERE title LIKE '%' UNION SELECT null FROM users--%'
                         </code></pre>
-                        <p>Using known column names to extract data:</p>
-                        <pre><code data-trim contenteditable>
-SELECT [...] WHERE title LIKE '%' UNION SELECT null,name,password FROM users--%'
+                        <pre class="fragment"><code class="sql" data-trim>
+SELECT [...] WHERE title LIKE '%' UNION SELECT null,null FROM users--%'
                         </code></pre>
+                        <pre class="fragment"><code class="sql" data-trim>
+SELECT [...] WHERE title LIKE '%' UNION SELECT null,null,null FROM users--%'
+                        </code></pre>
+                        <div class="fragment">
+                            <p>Using known column names to extract data:</p>
+                            <pre><code class="sql" data-trim>
+SELECT [...] WHERE title LIKE '%' UNION SELECT name,password,email FROM users--%'
+                            </code></pre>
+                        </div>
                     </section>
-                </section>
-
-                <section>
-                    <h3>Preventing Injection</h3>
-                    <ul>
-                        <li>Avoid Interpreters</li>
-                        <li>Bind Variables</li>
-                        <li>Prepared Statements</li>
-                        <li>Least Privileges for app DB user</li>
-                        <li>White List Input Validation</li>
-                    </ul>
+                    <section>
+                        <h3>Preventing Injection</h3>
+                        <ul>
+                            <li>Avoid Interpreters</li>
+                            <li>Bind Variables</li>
+                            <li>Prepared Statements</li>
+                            <li>Least Privileges for app DB user</li>
+                            <li>White List Input Validation</li>
+                        </ul>
+                    </section>
                 </section>
 
                 <section>
@@ -201,28 +205,71 @@ SELECT [...] WHERE title LIKE '%' UNION SELECT null,name,password FROM users--%'
 
                 <section>
                     <section>
-                        <h2>Cross Site Request Forgery (CSRF)</h2>
+                        <h3>XSS Attack Examples</h3>
+                        <pre><code class="command" data-trim contenteditable>
+http://bookwo.rm/titles/search?keywords=raspberry%20pi
+                        </code></pre>
+                        <p>The indented use case is to display the keywords above the results:</p>
+                        <pre><code class="java" data-trim contenteditable>
+<%
+String keywords = request.getParameter("keywords");
+List&lt;Book&gt; results = titleSearchService.findByKeywords(keywords.split(" "));
+%>;
+There are <%=results.count()%> results for your search by &lt;em&gt;<%=keywords%>&lt;/em&gt;
+&lt;table&gt;
+    <% for (Book book : results) { %>
+      // render result as table rows
+    <% } %>
+&lt;/table&gt;
+                        </code></pre>
                     </section>
                     <section>
-                        <h3></h3>
+                        <h3>Preventing XSS</h3>
                         <ul>
-                            <li></li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3></h3>
-                        <ul>
-                            <li></li>
+                            <li>Do not unnecessarily include user supplied input into your output</li>
+                            <li>Output encode <strong>all</strong> user supplied input</li>
+                            <li>Sanitize HTML where user supplied HTML chunks are unavoidable</li>
+                            <li>White List Input Validation</li>
                         </ul>
                     </section>
                 </section>
 
                 <section>
                     <section>
-                        <h2>CSRF Attack Examples</h2>
+                        <h2>Cross Site Request Forgery (CSRF)</h2>
+                    </section>
+                    <section>
+                        <h3>A Victim's Browser...</h3>
+                            <p>
+                                ...is tricked into issuing a command to a vulnerable webapp. This is caused by browsers automatically including user authentication data with each request.
+                            </p>
+                            <ul>
+                                <li>Session Cookie</li>
+                                <li>Basic Authentication</li>
+                                <li><code>Authorization</code> HTTP Header</li>
+                                <li>...</li>
+                            </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>CSRF Attack Examples</h3>
                         <img src="http://127.0.0.1/api/user/1/delete" width="200" height="300">
                         <img src="http://router.box/admin/reset" width="200" height="300">
                         <img src="http://myfor.um/logout.php" width="200" height="300">
+                    </section>
+                    <section>
+                        <h3>Preventing CSRF</h3>
+                        <ul>
+                            <li>Add a secret <em>not automatically submitted</em> token to all sensitive requests</li>
+                            <li>Require secondary authentication for sensitive functions</li>
+                            <li>Beware exposing the token in a referer header</li>
+                            <hr>
+                            <p>
+                                Make sure your application has no XSS holes that could be exploited to attack others!
+                            </p>
+                        </ul>
                     </section>
                 </section>
 
@@ -231,17 +278,78 @@ SELECT [...] WHERE title LIKE '%' UNION SELECT null,name,password FROM users--%'
                         <h2>Broken Authentication</h2>
                     </section>
                     <section>
-                        <h3></h3>
+                        <h3>Typical Authentication Flaws</h3>
                         <ul>
-                            <li></li>
+                            <li>Allowing weak passwords</li>
+                            <li>Credentials passed via insecure <code>http</code> connection</li>
+                            <li>Expose user session id's in URLs, unencrypted network traffic, logs, ...</li>
+                            <li>Storing SSL certificate insecurely</li>
                         </ul>
                     </section>
                     <section>
-                        <h3></h3>
+                        <h3>Side Channel Attack Vectors</h3>
                         <ul>
-                            <li></li>
+                            <li>Change Password</li>
+                            <li>&ldquo;Remember me&rdquo;</li>
+                            <li>Forgot Password</li>
+                            <li>Secret Questions</li>
+                            <li>Storing Credentials unencrypted</li>
                         </ul>
                     </section>
+                </section>
+
+                <section>
+                    <h3>Classical Broken Authentication...</h3>
+                    <h5>...due to starting login process on unencrypted page</h5>
+                    <pre><code data-trim contenteditable>
+http://sick-cure-ba.nk/login.do
+                    </code></pre>
+                    <pre><code class="command" data-trim>
+POST /login.do HTTP/1.1
+Host: sick-cure-ba.nk
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+username=bjoern&password=secret
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Weak hashes expose passwords...</h3>
+                    <h3>...and weak passwords void strong hashes</h3>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>username</th>
+                            <th>password</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>admin</td>
+                            <td><small>d033e22ae348aeb5660fc2140aec35850c4da997</small></td>
+                        <tr/>
+                        <tr>
+                            <td>2</td>
+                            <td>bjoern</td>
+                            <td><small>2bb80d537b1da3e38bd30361aa855686bde0eacd7162fef6a25fe97bf527a25b</small></td>
+                        <tr/>
+                        <tr>
+                            <td>3</td>
+                            <td>localhorst</td>
+                            <td><small>
+                                0f59bd4122f0c02002ec578e4eec306ed48ff2ad0105a307a6dc98c0e9a54fe4
+                                64e5f807236edce12134067a0b6690891e82490b2b9fa7b4171db43ee8cb4006
+                            </small></td>
+                        <tr/>
+                        </tbody>
+                    </table>
+                    <hr>
+                    <p>
+                        <small>Breaking those hashes with your favorite rainbow table or <a href="https://crackstation.net/">CrackStation</a> should be easy, even though two of them seem sufficiently long.</small>
+                    </p>
                 </section>
 
                 <section>
@@ -260,26 +368,28 @@ SELECT [...] WHERE title LIKE '%' UNION SELECT null,name,password FROM users--%'
                 </section>
 
                 <section>
-                    <h3>Tampering for Access Control Issues</h3>
-                        <pre><code data-trim contenteditable>
+                    <section>
+                        <h3>Tampering for Access Control Issues</h3>
+                            <pre><code class="command" data-trim contenteditable>
 http://logistics-worldwi.de/showShipment?id=40643108
-                        </code></pre>
-                        <pre><code data-trim contenteditable>
+                            </code></pre>
+                            <pre><code class="command" data-trim contenteditable>
 http://my-universi.ty/api/students/6503/exams/view
-                        </code></pre>
-                        <pre><code data-trim contenteditable>
+                            </code></pre>
+                            <pre><code class="command" data-trim contenteditable>
 http://cheap-sh.op?content=index.html
-                        </code></pre>
-                </section>
+                            </code></pre>
+                    </section>
 
-                <section>
-                    <h3>Securing Authorization</h3>
-                    <ul>
-                        <li>Never rely on <q>&ldquo;Security by obscurity&rdquo;</q></li>
-                        <li>Replace direct object references with temporary mappings</li>
-                        <li>Restrict data and functionality access to authorized users</li>
-                        <li>Enforce user or role based permissions</li>
-                    </ul>
+                    <section>
+                        <h3>Securing Authorization</h3>
+                        <ul>
+                            <li>Never rely on <q>&ldquo;Security by obscurity&rdquo;</q></li>
+                            <li>Replace direct object references with temporary mappings</li>
+                            <li>Restrict data and functionality access to authorized users</li>
+                            <li>Enforce user or role based permissions</li>
+                        </ul>
+                    </section>
                 </section>
 
                 <section>
@@ -299,51 +409,72 @@ http://cheap-sh.op?content=index.html
                 </section>
 
                 <section>
-                    <h3>Known Vulnerability Examples</h3>
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>Component</th>
-                            <th>Vulnerability</th>
-                            <th>Affected</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>OpenSSL</td>
-                            <td><small>Obtain sensitive information from process memory via crafted packets that trigger a buffer over-read (<a href="http://heartbleed.com/">Heartbleed</a>)</small></td>
-                            <td><small>1.0.1 - 1.0.1f, 1.0.2-beta, 1.0.2-beta1</small></td>
-                        <tr/>
-                        <tr class="fragment">
-                            <td>Unix Bash</td>
-                            <td><small>Execution of arbitrary commands on vulnerable Bash, potentially compromising the entire system (<a href="http://en.wikipedia.org/wiki/Shellshock_(software_bug)">Shellshock</a>)</small></td>
-                            <td><small>CGI, OpenSSH, DHCP, QMail, ...</small></td>
-                        <tr/>
-                        <tr class="fragment">
-                            <td>Struts</td>
-                            <td><small>Remote manipulation of the <code>ClassLoader</code> via the <code>class</code> parameter, which is passed to the <code>getClass()</code> method</small></td>
-                            <td><small>before 2.3.16.1</small></td>
-                        <tr/>
-                        <tr class="fragment">
-                            <td>Struts</td>
-                            <td><small>Wildcard <code>cookiesName</code> not properly restricts access to the <code>getClass()</code> method, which allows <code>ClassLoader</code> manipulation</td>
-                            <td><small>before 2.3.16.2</small></td>
-                        <tr/>
-                        </tbody>
-                    </table>
+                    <section>
+                        <h3>Known Vulnerability Examples</h3>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>Vulnerability</th>
+                                <th>Affected</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>OpenSSL</td>
+                                <td><small>Obtain sensitive information from process memory via crafted packets that trigger a buffer over-read (<a href="http://heartbleed.com/">Heartbleed</a>)</small></td>
+                                <td><small>1.0.1 - 1.0.1f, 1.0.2-beta, 1.0.2-beta1</small></td>
+                            <tr/>
+                            <tr class="fragment">
+                                <td>Unix Bash</td>
+                                <td><small>Execution of arbitrary commands on vulnerable Bash, potentially compromising the entire system (<a href="http://en.wikipedia.org/wiki/Shellshock_(software_bug)">Shellshock</a>)</small></td>
+                                <td><small>CGI, OpenSSH, DHCP, QMail, ...</small></td>
+                            <tr/>
+                            <tr class="fragment">
+                                <td>Struts</td>
+                                <td><small>Remote manipulation of the <code>ClassLoader</code> via the <code>class</code> parameter, which is passed to the <code>getClass()</code> method</small></td>
+                                <td><small>before 2.3.16.1</small></td>
+                            <tr/>
+                            <tr class="fragment">
+                                <td>Struts</td>
+                                <td><small>Wildcard <code>cookiesName</code> not properly restricts access to the <code>getClass()</code> method, which allows <code>ClassLoader</code> manipulation</td>
+                                <td><small>before 2.3.16.2</small></td>
+                            <tr/>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <section>
+                        <h3>Protection from Environmental Vulnerabilities</h3>
+                        <ul>
+                            <li>Monitor security of used components</li>
+                            <li>Keep up with patches for used components</li>
+                            <li>Remove unnecessary stuff on all levels</li>
+                            <li>Restrict use of unapproved components</li>
+                        </ul>
+                    </section>
                 </section>
 
+
                 <section>
-					<h2>Credits</h2>
-					<ul>
-						<li><a href="http://lab.hakim.se/reveal-js">reveal.js</a> - The HTML Presentation Framework</li>
-                        <li><a href="https://owasp.org">OWASP</a> - The Open Web Application Security Project</li>
-					</ul>
-				</section>
+                    <section>
+                        <h1>Q&A</h1>
+                    </section>
+                    <section>
+                        <h2>Credits</h2>
+                        <ul>
+                            <li><a href="http://lab.hakim.se/reveal-js">reveal.js</a> - The HTML Presentation Framework</li>
+                            <li><a href="https://owasp.org">OWASP</a> - The Open Web Application Security Project</li>
+                        </ul>
+                    </section>
+                </section>
 
 				<section>
 					<h1>THE END</h1>
-					<h3>BY Björn Kimminich / kimminich.de</h3>
+					<h3>by Björn Kimminich / kimminich.de</h3>
+                    <p>
+                        These slides are publicly available on <a href="https://github.com/bkimminich/webappsec-nutshell">GitHub</a> and <a href="">Slideshare</a>.
+                    </p>
 				</section>
 
 			</div>
