@@ -284,20 +284,53 @@ http://cheap-sh.op?content=index.html
 
                 <section>
                     <section>
-                        <h2>Broken Ecosystem</h2>
+                        <h2>Broken Environment</h2>
                     </section>
                     <section>
-                        <h3></h3>
+                        <h3>Possible Environmental Vulnerabilities</h3>
                         <ul>
-                            <li></li>
+                            <li>Software Libraries</li>
+                            <li>Application Server</li>
+                            <li>Web Server</li>
+                            <li>Operating System</li>
+                            <li>...</li>
                         </ul>
                     </section>
-                    <section>
-                        <h3></h3>
-                        <ul>
-                            <li></li>
-                        </ul>
-                    </section>
+                </section>
+
+                <section>
+                    <h3>Known Vulnerability Examples</h3>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Vulnerability</th>
+                            <th>Affected</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>OpenSSL</td>
+                            <td><small>Obtain sensitive information from process memory via crafted packets that trigger a buffer over-read (<a href="http://heartbleed.com/">Heartbleed</a>)</small></td>
+                            <td><small>1.0.1 - 1.0.1f, 1.0.2-beta, 1.0.2-beta1</small></td>
+                        <tr>
+                        <tr>
+                            <td>Unix Bash</td>
+                            <td><small>Execution of arbitrary commands on vulnerable Bash, potentially compromising the entire system (<a href="http://en.wikipedia.org/wiki/Shellshock_(software_bug)">Shellshock</a>)</small></td>
+                            <td><small>CGI, OpenSSH, DHCP, QMail, ...</small></td>
+                        <tr>
+                        <tr>
+                            <td>Struts</td>
+                            <td><small>Remote manipulation of the <code>ClassLoader</code> via the <code>class</code> parameter, which is passed to the <code>getClass()</code> method</small></td>
+                            <td><small>before 2.3.16.1</small></td>
+                        <tr>
+                        <tr>
+                            <td>Struts</td>
+                            <td><small>Wildcard <code>cookiesName</code> not properly restricts access to the <code>getClass()</code> method, which allows <code>ClassLoader</code> manipulation</td>
+                            <td><small>before 2.3.16.2</small></td>
+                        <tr>
+                        </tbody>
+                    </table>
                 </section>
 
                 <section>
