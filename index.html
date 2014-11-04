@@ -226,9 +226,9 @@ There are <%=results.count()%> results for your search by &lt;em&gt;<%=keywords%
                     <section>
                         <h3>Preventing XSS</h3>
                         <ul>
-                            <li>Do not unnecessarily include user supplied input into your output</li>
+                            <li>Do not unnecessarily include user supplied input into output</li>
                             <li>Output encode <strong>all</strong> user supplied input</li>
-                            <li>Sanitize HTML where user supplied HTML chunks are unavoidable</li>
+                            <li>Sanitize HTML where user supplied HTML is unavoidable</li>
                             <li>White List Input Validation</li>
                         </ul>
                     </section>
@@ -262,14 +262,15 @@ There are <%=results.count()%> results for your search by &lt;em&gt;<%=keywords%
                     <section>
                         <h3>Preventing CSRF</h3>
                         <ul>
-                            <li>Add a secret <em>not automatically submitted</em> token to all sensitive requests</li>
+                            <li>Add a secret token to all sensitive requests</li>
+                            <li>This token must not be automatically submitted</li>
                             <li>Require secondary authentication for sensitive functions</li>
-                            <li>Beware exposing the token in a referer header</li>
-                            <hr>
-                            <p>
-                                Make sure your application has no XSS holes that could be exploited to attack others!
-                            </p>
+                            <li>Beware exposing the token in a <code>Referer</code> HTTP header</li>
                         </ul>
+                        <hr>
+                        <p>
+                            Make sure your application has no XSS holes that could be exploited to attack others!
+                        </p>
                     </section>
                 </section>
 
@@ -281,9 +282,9 @@ There are <%=results.count()%> results for your search by &lt;em&gt;<%=keywords%
                         <h3>Typical Authentication Flaws</h3>
                         <ul>
                             <li>Allowing weak passwords</li>
-                            <li>Credentials passed via insecure <code>http</code> connection</li>
-                            <li>Expose user session id's in URLs, unencrypted network traffic, logs, ...</li>
                             <li>Storing SSL certificate insecurely</li>
+                            <li>Credentials passed via insecure <code>http</code> connection</li>
+                            <li>Expose session id's in URLs, via unencrypted network, logs, ...</li>
                         </ul>
                     </section>
                     <section>
@@ -293,8 +294,11 @@ There are <%=results.count()%> results for your search by &lt;em&gt;<%=keywords%
                             <li>&ldquo;Remember me&rdquo;</li>
                             <li>Forgot Password</li>
                             <li>Secret Questions</li>
-                            <li>Storing Credentials unencrypted</li>
                         </ul>
+                        <hr>
+                        <p>
+                            Make sure your application does not store credentials in its database unencrypted!
+                        </p>
                     </section>
                 </section>
 
@@ -348,7 +352,10 @@ username=bjoern&password=secret
                     </table>
                     <hr>
                     <p>
-                        <small>Breaking those hashes with your favorite rainbow table or <a href="https://crackstation.net/">CrackStation</a> should be easy, even though two of them seem sufficiently long.</small>
+                        <small>
+                            Breaking those hashes with your favorite rainbow table or <a href="https://crackstation.net/">CrackStation</a>
+                            should be easy, even though the last two of them seem sufficiently long with their 256 and 512bit size!
+                        </small>
                     </p>
                 </section>
 
@@ -369,7 +376,8 @@ username=bjoern&password=secret
 
                 <section>
                     <section>
-                        <h3>Tampering for Access Control Issues</h3>
+                        <h3>Request Tampering for Privilege Escalation...</h3>
+                        <h5>...and finding all kinds of Access Control Issues</h5>
                             <pre><code class="command" data-trim contenteditable>
 http://logistics-worldwi.de/showShipment?id=40643108
                             </code></pre>
@@ -377,7 +385,7 @@ http://logistics-worldwi.de/showShipment?id=40643108
 http://my-universi.ty/api/students/6503/exams/view
                             </code></pre>
                             <pre><code class="command" data-trim contenteditable>
-http://cheap-sh.op?content=index.html
+http://document-warehou.se/landingpage?content=index.html
                             </code></pre>
                     </section>
 
