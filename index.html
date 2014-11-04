@@ -214,7 +214,7 @@ http://bookwo.rm/titles/search?keywords=raspberry%20pi
 <%
 String keywords = request.getParameter("keywords");
 List&lt;Book&gt; results = titleSearchService.findByKeywords(keywords.split(" "));
-%>;
+%>
 There are <%=results.count()%> results for your search by &lt;em&gt;<%=keywords%>&lt;/em&gt;
 &lt;table&gt;
     <% for (Book book : results) { %>
