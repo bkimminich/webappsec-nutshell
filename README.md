@@ -4,12 +4,18 @@ An ultra-compact intro (or refresher) to Web Application Security derived from m
 
 ## Setup...
 
-### ...for everyone
+### ...for online viewers
+
+1. Open <http://webappsec-nutshell.kimminich.de/>
+2. Done!
+
+### ...for offline viewers
 
 1. Download _Source Code (zip)_ of [latest release](https://github.com/bkimminich/webappsec-nutshell/releases/latest)
 2. Unpack ```<version>.zip``` to disk
 3. ```$ cd webappsec-nutshell```
 4. Open ```index.html``` with your favorite browser
+5. Done!
 
 ### ...for developers
 
@@ -20,10 +26,12 @@ An ultra-compact intro (or refresher) to Web Application Security derived from m
 5. ```$ npm install```
 6. ```$ grunt serve```
 7. Open <http://localhost:8000> to view the presentation
+8. Done!
 
 ### ...for those who are happy with just a PDF
 
 1. Open <http://slideshare.net/BjrnKimminich/web-application-security-in-a-nutshell>
+2. Done! No fancy paralax background for you, though... :-)
 
 ## Credits
 
