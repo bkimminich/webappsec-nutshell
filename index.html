@@ -168,16 +168,17 @@ SELECT [...] WHERE title LIKE '%' UNION SELECT name,password,email FROM users--%
                             </code></pre>
                         </div>
                     </section>
-                    <section>
-                        <h3>Preventing Injection</h3>
-                        <ul>
-                            <li>Avoid Interpreters</li>
-                            <li>Bind Variables</li>
-                            <li>Prepared Statements</li>
-                            <li>Least Privileges for app DB user</li>
-                            <li>White List Input Validation</li>
-                        </ul>
-                    </section>
+                </section>
+
+                <section>
+                    <h3>Preventing Injection</h3>
+                    <ul>
+                        <li>Avoid Interpreters</li>
+                        <li>Bind Variables</li>
+                        <li>Prepared Statements</li>
+                        <li>Least Privileges for app DB user</li>
+                        <li>White List Input Validation</li>
+                    </ul>
                 </section>
 
                 <section>
@@ -243,15 +244,16 @@ There are <%=results.count()%> results for your search by &lt;em&gt;<%=keywords%
 &lt;script&gt;document.body.background="http://my.evil-si.te/image.jpg";&lt;/script&gt;
                         </code></pre>
                     </section>
-                    <section>
-                        <h3>Preventing XSS</h3>
-                        <ul>
-                            <li>Do not unnecessarily include user supplied input into output</li>
-                            <li>Output encode <strong>all</strong> user supplied input</li>
-                            <li>Sanitize HTML where user supplied HTML is unavoidable</li>
-                            <li>White List Input Validation</li>
-                        </ul>
-                    </section>
+                </section>
+
+                <section>
+                    <h3>Preventing XSS</h3>
+                    <ul>
+                        <li>Do not unnecessarily include user supplied input into output</li>
+                        <li>Output encode <strong>all</strong> user supplied input</li>
+                        <li>Sanitize HTML where user supplied HTML is unavoidable</li>
+                        <li>White List Input Validation</li>
+                    </ul>
                 </section>
 
                 <section>
@@ -273,25 +275,24 @@ There are <%=results.count()%> results for your search by &lt;em&gt;<%=keywords%
                 </section>
 
                 <section>
-                    <section>
-                        <h3>CSRF Attack Examples</h3>
-                        <img src="http://127.0.0.1/api/user/1/delete" width="200" height="300">
-                        <img src="http://router.box/admin/reset" width="200" height="300">
-                        <img src="http://myfor.um/logout.php" width="200" height="300">
-                    </section>
-                    <section>
-                        <h3>Preventing CSRF</h3>
-                        <ul>
-                            <li>Add a secret token to all sensitive requests</li>
-                            <li>This token must not be automatically submitted</li>
-                            <li>Require secondary authentication for sensitive functions</li>
-                            <li>Beware exposing the token in a <code>Referer</code> HTTP header</li>
-                        </ul>
-                        <hr>
-                        <p>
-                            Make sure your application has no XSS holes that could be exploited to attack others!
-                        </p>
-                    </section>
+                    <h3>CSRF Attack Examples</h3>
+                    <img src="http://127.0.0.1/api/user/1/delete" width="200" height="300">
+                    <img src="http://router.box/admin/reset" width="200" height="300">
+                    <img src="http://myfor.um/logout.php" width="200" height="300">
+                </section>
+
+                <section>
+                    <h3>Preventing CSRF</h3>
+                    <ul>
+                        <li>Add a secret token to all sensitive requests</li>
+                        <li>This token must not be automatically submitted</li>
+                        <li>Require secondary authentication for sensitive functions</li>
+                        <li>Beware exposing the token in a <code>Referer</code> HTTP header</li>
+                    </ul>
+                    <hr>
+                    <p>
+                        Make sure your application has no XSS holes that could be exploited to attack others!
+                    </p>
                 </section>
 
                 <section>
@@ -315,10 +316,6 @@ There are <%=results.count()%> results for your search by &lt;em&gt;<%=keywords%
                             <li>Forgot Password</li>
                             <li>Secret Questions</li>
                         </ul>
-                        <hr>
-                        <p>
-                            Make sure your application does not store credentials in its database unencrypted!
-                        </p>
                     </section>
                 </section>
 
@@ -380,6 +377,16 @@ username=bjoern&password=secret
                 </section>
 
                 <section>
+                    <h3>Securing Authentication</h3>
+                    <ul>
+                        <li>Centralized and standardize authentication</li>
+                        <li>Protect credentials with SSL/TLS</li>
+                        <li>Use strong authentication mechanism (with multiple factors)</li>
+                        <li>Do not store or log unencrypted credentials</li>
+                    </ul>
+                </section>
+
+                <section>
                     <section>
                         <h2>Broken Access Control</h2>
                     </section>
@@ -395,29 +402,27 @@ username=bjoern&password=secret
                 </section>
 
                 <section>
-                    <section>
-                        <h3>Request Tampering for Privilege Escalation...</h3>
-                        <h5>...and finding all kinds of Access Control Issues</h5>
-                            <pre><code class="command" data-trim contenteditable>
+                    <h3>Request Tampering for Privilege Escalation...</h3>
+                    <h5>...and finding all kinds of Access Control Issues</h5>
+                        <pre><code class="command" data-trim contenteditable>
 http://logistics-worldwi.de/showShipment?id=40643108
-                            </code></pre>
-                            <pre><code class="command" data-trim contenteditable>
+                        </code></pre>
+                        <pre><code class="command" data-trim contenteditable>
 http://my-universi.ty/api/students/6503/exams/view
-                            </code></pre>
-                            <pre><code class="command" data-trim contenteditable>
+                        </code></pre>
+                        <pre><code class="command" data-trim contenteditable>
 http://document-warehou.se/landingpage?content=index.html
-                            </code></pre>
+                        </code></pre>
                     </section>
 
-                    <section>
-                        <h3>Securing Authorization</h3>
-                        <ul>
-                            <li>Never rely on <q>&ldquo;Security by obscurity&rdquo;</q></li>
-                            <li>Replace direct object references with temporary mappings</li>
-                            <li>Restrict data and functionality access to authorized users</li>
-                            <li>Enforce user or role based permissions</li>
-                        </ul>
-                    </section>
+                <section>
+                    <h3>Securing Access Control</h3>
+                    <ul>
+                        <li>Never rely on <q>&ldquo;Security by obscurity&rdquo;</q></li>
+                        <li>Replace direct object references with temporary mappings</li>
+                        <li>Restrict data and functionality access to authorized users</li>
+                        <li>Enforce user or role based permissions</li>
+                    </ul>
                 </section>
 
                 <section>
@@ -437,61 +442,58 @@ http://document-warehou.se/landingpage?content=index.html
                 </section>
 
                 <section>
-                    <section>
-                        <h3>Known Vulnerability Examples</h3>
-                        <table>
-                            <thead>
-                            <tr>
-                                <th>Component</th>
-                                <th>Vulnerability</th>
-                                <th>Affected</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>OpenSSL</td>
-                                <td><small>Obtain sensitive information from process memory via crafted packets that trigger a buffer over-read (<a href="http://heartbleed.com/">Heartbleed</a>)</small></td>
-                                <td><small>1.0.1 - 1.0.1f, 1.0.2-beta, 1.0.2-beta1</small></td>
-                            <tr/>
-                            <tr class="fragment">
-                                <td>Unix Bash</td>
-                                <td><small>Execution of arbitrary commands on vulnerable Bash, potentially compromising the entire system (<a href="http://en.wikipedia.org/wiki/Shellshock_(software_bug)">Shellshock</a>)</small></td>
-                                <td><small>CGI, OpenSSH, DHCP, QMail, ...</small></td>
-                            <tr/>
-                            <tr class="fragment">
-                                <td>Struts</td>
-                                <td><small>Remote manipulation of the <code>ClassLoader</code> via the <code>class</code> parameter, which is passed to the <code>getClass()</code> method</small></td>
-                                <td><small>before 2.3.16.1</small></td>
-                            <tr/>
-                            <tr class="fragment">
-                                <td>Struts</td>
-                                <td><small>Wildcard <code>cookiesName</code> not properly restricts access to the <code>getClass()</code> method, which allows <code>ClassLoader</code> manipulation</small></td>
-                                <td><small>before 2.3.16.2</small></td>
-                            <tr/>
-                            </tbody>
-                        </table>
-                    </section>
-
-                    <section>
-                        <h3>Protection from Environmental Vulnerabilities</h3>
-                        <ul>
-                            <li>Monitor security of used components</li>
-                            <li>Keep up with patches for used components</li>
-                            <li>Remove unnecessary stuff on all levels</li>
-                            <li>Restrict use of unapproved components</li>
-                        </ul>
-                        <hr>
-                        <p>
-                            <small>
-                                Java and .NET project dependencies can be monitored by <a href="https://www.owasp.org/index.php/OWASP_Dependency_Check">OWASP Dependency Check</a> which
-                                relies on the <a href="http://nvd.nist.gov/download.cfm">NIST National Vulnerability Database</a>. For Javascript and Node.js modules there is
-                                <a href="http://bekk.github.io/retire.js/">Retire.js</a> which is updated manually via <a href="https://github.com/bekk/retire.js">its GitHub project</a>.
-                                Both tools integrate well with typical software build processes.
-                            </small>
-                        </p>
-                    </section>
+                    <h3>Known Vulnerability Examples</h3>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Vulnerability</th>
+                            <th>Affected</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>OpenSSL</td>
+                            <td><small>Obtain sensitive information from process memory via crafted packets that trigger a buffer over-read (<a href="http://heartbleed.com/">Heartbleed</a>)</small></td>
+                            <td><small>1.0.1 - 1.0.1f, 1.0.2-beta, 1.0.2-beta1</small></td>
+                        <tr/>
+                        <tr class="fragment">
+                            <td>Unix Bash</td>
+                            <td><small>Execution of arbitrary commands on vulnerable Bash, potentially compromising the entire system (<a href="http://en.wikipedia.org/wiki/Shellshock_(software_bug)">Shellshock</a>)</small></td>
+                            <td><small>CGI, OpenSSH, DHCP, QMail, ...</small></td>
+                        <tr/>
+                        <tr class="fragment">
+                            <td>Struts</td>
+                            <td><small>Remote manipulation of the <code>ClassLoader</code> via the <code>class</code> parameter, which is passed to the <code>getClass()</code> method</small></td>
+                            <td><small>before 2.3.16.1</small></td>
+                        <tr/>
+                        <tr class="fragment">
+                            <td>Struts</td>
+                            <td><small>Wildcard <code>cookiesName</code> not properly restricts access to the <code>getClass()</code> method, which allows <code>ClassLoader</code> manipulation</small></td>
+                            <td><small>before 2.3.16.2</small></td>
+                        <tr/>
+                        </tbody>
+                    </table>
                 </section>
 
+                <section>
+                    <h3>Protection from Environmental Vulnerabilities</h3>
+                    <ul>
+                        <li>Monitor security of used components</li>
+                        <li>Keep up with patches for used components</li>
+                        <li>Remove unnecessary stuff on all levels</li>
+                        <li>Restrict use of unapproved components</li>
+                    </ul>
+                    <hr>
+                    <p>
+                        <small>
+                            Java and .NET project dependencies can be monitored by <a href="https://www.owasp.org/index.php/OWASP_Dependency_Check">OWASP Dependency Check</a> which
+                            relies on the <a href="http://nvd.nist.gov/download.cfm">NIST National Vulnerability Database</a>. For Javascript and Node.js modules there is
+                            <a href="http://bekk.github.io/retire.js/">Retire.js</a> which is updated manually via <a href="https://github.com/bekk/retire.js">its GitHub project</a>.
+                            Both tools integrate well with typical software build processes.
+                        </small>
+                    </p>
+                </section>
 
                 <section>
                     <section>
