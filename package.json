@@ -1,6 +1,6 @@
 {
   "name": "webappsec-nutshell",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Presentation \"Web Application Security in a nutshell\"",
   "homepage": "https://github.com/bkimminich/webappsec-nutshell",
   "scripts": {
