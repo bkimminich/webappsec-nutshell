@@ -1,5 +1,14 @@
 language: node_js
 node_js:
-  - 0.10
+- 0.1
+env:
+  global:
+  - secure: IEV76JVcHnkUhg+6UZtbaAjNL7Q/XCyhokxGLA9vyhceyquY206+6Ess/Femmabnco+vo0/ALkVS3vzZIyaljZTa8xySFe0BcIrGFrlsrNgMoUBOC7LKGimSSp7Efs3xjjkCtyQjbKodOLvwaP/CMqSA25avWeoaWcd5y+nzc+w=
+  - secure: sW/qSe9Cn9hctKJKueEK94C+RZB3GkqNDtWs9dkBBQWFS6DSuTJ8qvmI8TczlO5S9o3XtM/m17g5hZS/HTwTQG8WvnNZvAuq2+R7Efzi9xR4z6mAycaiigEnlwDexhF9L6cmNqNw/HEeXUf4Z1dLiVSltn/vKHQzSk1No8UERYo=
 before_script:
-  - npm install -g grunt-cli
+- npm install -g grunt-cli
+deploy:
+  provider: script
+  script: deploy.sh
+  on:
+  	branch: master
