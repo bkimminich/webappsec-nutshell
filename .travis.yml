@@ -7,9 +7,6 @@ env:
   - secure: sW/qSe9Cn9hctKJKueEK94C+RZB3GkqNDtWs9dkBBQWFS6DSuTJ8qvmI8TczlO5S9o3XtM/m17g5hZS/HTwTQG8WvnNZvAuq2+R7Efzi9xR4z6mAycaiigEnlwDexhF9L6cmNqNw/HEeXUf4Z1dLiVSltn/vKHQzSk1No8UERYo=
 before_script:
   - npm install -g grunt-cli
-deploy:
-  provider: script
-  script: deploy.sh
-  on:
-    branch: master
+after_script:
+  - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && curl --ftp-create-dirs -T index.html ftp://ftp.strato.de/webappsec-nutshell/ -u $FTP_USER:$FTP_PASSWORD
 sudo: false
