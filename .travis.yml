@@ -11,5 +11,5 @@ deploy:
   provider: script
   script: deploy.sh
   on:
-  	branch: master
+    branch: master
 sudo: false
