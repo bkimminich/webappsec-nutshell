@@ -1,16 +1,22 @@
 {
-  "name": "webappsec-nutshell",
-  "version": "1.2.0",
-  "description": "Presentation \"Web Application Security in a nutshell\"",
-  "homepage": "https://github.com/bkimminich/webappsec-nutshell",
+  "name": "reveal.js",
+  "version": "3.1.0",
+  "description": "The HTML Presentation Framework",
+  "homepage": "http://lab.hakim.se/reveal-js",
+  "subdomain": "revealjs",
+  "main": "js/reveal.js",
   "scripts": {
     "test": "grunt test",
-    "start": "grunt serve"
+    "start": ""
   },
-  "author": "Bjoern Kimminich",
+  "author": {
+    "name": "Hakim El Hattab",
+    "email": "hakim.elhattab@gmail.com",
+    "web": "http://hakim.se"
+  },
   "repository": {
     "type": "git",
-    "url": "git://github.com/bkimminich/webappsec-nutshell.git"
+    "url": "git://github.com/hakimel/reveal.js.git"
   },
   "engines": {
     "node": "~0.10.0"
@@ -19,23 +25,25 @@
     "underscore": "~1.5.1",
     "express": "~2.5.9",
     "mustache": "~0.7.2",
-    "socket.io": "~0.9.13"
+    "socket.io": "~0.9.16"
   },
   "devDependencies": {
-    "grunt-contrib-qunit": "~0.2.2",
+    "grunt-contrib-qunit": "~0.5.2",
     "grunt-contrib-jshint": "~0.6.4",
-    "grunt-contrib-cssmin": "~0.4.1",
+    "grunt-contrib-cssmin": "~0.12.2",
     "grunt-contrib-uglify": "~0.2.4",
     "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-sass": "~0.5.0",
-    "grunt-contrib-connect": "~0.4.1",
+    "grunt-sass": "~0.14.0",
+    "grunt-contrib-connect": "~0.8.0",
+    "grunt-autoprefixer": "~1.0.1",
     "grunt-zip": "~0.7.0",
-    "grunt": "~0.4.0"
+    "grunt": "~0.4.0",
+    "node-sass": "~0.9.3"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/bkimminich/webappsec-nutshell/blob/master/LICENSE.md"
+      "url": "https://github.com/hakimel/reveal.js/blob/master/LICENSE"
     }
   ]
 }
