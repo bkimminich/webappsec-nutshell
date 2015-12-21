@@ -39,8 +39,6 @@ An ultra-compact intro (or refresher) to Web Application Security derived from m
 - Based on free material provided by the [Open Web Application Security Project (OWASP)](https://owasp.org)
 - Background image based on [Digital Shodan](http://sephiroth-kmfdm.deviantart.com/art/Digital-Shodan-56013493) by [sephiroth-kmfdm](http://sephiroth-kmfdm.deviantart.com/)
 
-## License
+## Copyright
 
-MIT licensed
-
-Copyright (C) 2014 Bjoern Kimminich, http://kimminich.de
+Copyright (C) 2015 Bjoern Kimminich, http://kimminich.de
