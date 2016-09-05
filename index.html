@@ -250,7 +250,7 @@ There are <%=results.count()%> results for your search by &lt;em&gt;<%=keywords%
                 <section>
                     <h3>Preventing XSS</h3>
                     <ul>
-                        <li>Do not unnecessarily include user supplied input into output</li>
+                        <li>Avoid including user supplied input into output</li>
                         <li>Output encode <strong>all</strong> user supplied input</li>
                         <li>Sanitize HTML where user supplied HTML is unavoidable</li>
                         <li>White List Input Validation</li>
@@ -306,7 +306,7 @@ There are <%=results.count()%> results for your search by &lt;em&gt;<%=keywords%
                             <li>Allowing weak passwords</li>
                             <li>Storing SSL certificate insecurely</li>
                             <li>Credentials passed via insecure <code>http</code> connection</li>
-                            <li>Expose session id's in URLs, via unencrypted network, logs, ...</li>
+                            <li>Expose session id's in URLs, via unsafe network, logs, ...</li>
                         </ul>
                     </section>
                     <section>
@@ -382,7 +382,7 @@ username=bjoern&password=secret
                     <ul>
                         <li>Centralized and standardize authentication</li>
                         <li>Protect credentials with SSL/TLS</li>
-                        <li>Use strong authentication mechanism (with multiple factors)</li>
+                        <li>Use strong mechanism with multiple factors</li>
                         <li>Do not store or log unencrypted credentials</li>
                     </ul>
                 </section>
@@ -504,7 +504,7 @@ http://document-warehou.se/landingpage?content=index.html
                         <h2>Credits</h2>
                             <p>Presentation created with <a href="https://github.com/hakimel/reveal.js">reveal.js</a></p><small>The HTML Presentation Framework</small>
                             <p>Based on free material provided by <a href="https://owasp.org">OWASP</a></p><small>The Open Web Application Security Project</small>
-                            <p>Background image based on <a href="http://sephiroth-kmfdm.deviantart.com/art/Digital-Shodan-56013493">Digital Shodan</a> by <a href="http://sephiroth-kmfdm.deviantart.com/">sephiroth-kmfdm</a></p>
+                            <p>Background image based on <a href="http://sephiroth-kmfdm.deviantart.com/art/Digital-Shodan-56013493">Digital Shodan</a></p><small>by <a href="http://sephiroth-kmfdm.deviantart.com/">sephiroth-kmfdm</a></small>
                     </section>
                 </section>
 
