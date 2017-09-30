@@ -372,7 +372,7 @@ username=bjoern&password=secret
                     <p>
                         <small>
                             Cracking unsalted hashes with a <a href="http://en.wikipedia.org/wiki/Rainbow_table">Rainbow Table</a> attack is fast, even though the last two of them might seem sufficiently secure given their 256 and 512bit length.
-                            You can even crack password hashes online, e.g. at <a href="https://crackstation.net/">CrackStation</a> or via <a href="https://twitter.com/PlzCrack">a tweet to @PlzCrack</a>.
+                            You can easily crack weak password hashes online, e.g. at <a href="https://crackstation.net/">CrackStation</a>.
                         </small>
                     </p>
                 </section>
@@ -381,10 +381,22 @@ username=bjoern&password=secret
                     <h3>Securing Authentication</h3>
                     <ul>
                         <li>Centralized and standardize authentication</li>
-                        <li>Protect credentials with SSL/TLS</li>
+                        <li>Protect credentials with SSL/TLS<small>1</small></li>
                         <li>Use strong mechanism with multiple factors</li>
-                        <li>Do not store or log unencrypted credentials</li>
+                        <li>Do not store or log unencrypted credentials<small>2</small></li>
                     </ul>
+                    <hr>
+                    <p>
+                    <small>
+                        <small>1</small>Serve a <a href="https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security">HSTS header</a> from your site to protect against protocol downgrade attacks. Also consider applying to have your domain included in the <a href="https://hstspreload.org">HSTS preload list</a> of Chromium.
+                    </small>
+                    </p>
+                    <p>
+                    <small>
+                        <small>2</small> Use only brute-force resistant algorithms for password hashing, preferrably <a href="https://github.com/P-H-C/phc-winner-argon2">Argon2</a> the winner of
+                        the <a href="https://password-hashing.net/">Password Hashing Competition</a>.
+                    </small>
+                    </p>
                 </section>
 
                 <section>
