@@ -1,9 +1,7 @@
 /* global module:false */
 module.exports = function(grunt) {
 	var port = grunt.option('port') || 8000;
-	var root = grunt.option('root') || '.';
-
-	if (!Array.isArray(root)) root = [root];
+	var base = grunt.option('base') || '.';
 
 	// Project configuration
 	grunt.initConfig({
@@ -15,7 +13,7 @@ module.exports = function(grunt) {
 				' * http://lab.hakim.se/reveal-js\n' +
 				' * MIT licensed\n' +
 				' *\n' +
-				' * Copyright (C) 2017 Hakim El Hattab, http://hakim.se\n' +
+				' * Copyright (C) 2015 Hakim El Hattab, http://hakim.se\n' +
 				' */'
 		},
 
@@ -44,7 +42,7 @@ module.exports = function(grunt) {
 					{
 						expand: true,
 						cwd: 'css/theme/source',
-						src: ['*.sass', '*.scss'],
+						src: ['*.scss'],
 						dest: 'css/theme',
 						ext: '.css'
 					}
@@ -71,7 +69,6 @@ module.exports = function(grunt) {
 				curly: false,
 				eqeqeq: true,
 				immed: true,
-				esnext: true,
 				latedef: true,
 				newcap: true,
 				noarg: true,
@@ -96,12 +93,11 @@ module.exports = function(grunt) {
 			server: {
 				options: {
 					port: port,
-					base: root,
+					base: base,
 					livereload: true,
 					open: true
 				}
-			},
-
+			}
 		},
 
 		zip: {
@@ -117,17 +113,15 @@ module.exports = function(grunt) {
 		},
 
 		watch: {
+			options: {
+				livereload: true
+			},
 			js: {
 				files: [ 'Gruntfile.js', 'js/reveal.js' ],
 				tasks: 'js'
 			},
 			theme: {
-				files: [
-					'css/theme/source/*.sass',
-					'css/theme/source/*.scss',
-					'css/theme/template/*.sass',
-					'css/theme/template/*.scss'
-				],
+				files: [ 'css/theme/source/*.scss', 'css/theme/template/*.scss' ],
 				tasks: 'css-themes'
 			},
 			css: {
@@ -135,20 +129,11 @@ module.exports = function(grunt) {
 				tasks: 'css-core'
 			},
 			html: {
-				files: root.map(path => path + '/*.html')
+				files: [ 'index.html']
 			},
 			markdown: {
-				files: root.map(path => path + '/*.md')
-			},
-			options: {
-				livereload: true
+				files: [ './*.md' ]
 			}
-		},
-
-		retire: {
-			js: ['js/reveal.js', 'lib/js/*.js', 'plugin/**/*.js'],
-			node: ['.'],
-			options: {}
 		}
 
 	});
@@ -163,7 +148,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks( 'grunt-contrib-connect' );
 	grunt.loadNpmTasks( 'grunt-autoprefixer' );
 	grunt.loadNpmTasks( 'grunt-zip' );
-	grunt.loadNpmTasks( 'grunt-retire' );
 
 	// Default task
 	grunt.registerTask( 'default', [ 'css', 'js' ] );
