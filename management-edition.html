@@ -44,22 +44,21 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
                 <section>
-                    <section>
-                        <h1>Web Application Security</h1>
-                        <h3>in a nutshell</h3>
-                        <h5>An ultra-compact intro (for managers)</h5>
-                        <p>
-                            <small>Created by <a href="https://www.linkedin.com/in/bkimminich/">Björn Kimminich</a> / <a href="http://twitter.com/bkimminich">@bkimminich</a></small>
-                        </p>
-                    </section>
-                    <section>
-                        <h2>Björn Kimminich</h2>
-                        <ul>
-                            <li>IT Architect / AppSec Officer at <a href="http://kuehne-nagel.com">Kuehne + Nagel</a></li>
-                            <li>Volunteer in the <a href="https://owasp.org">Open Web Application Security Project</a></li>
-                            <li>Board Member of the <a href="https://www.owasp.org/index.php/Germany">German OWASP Chapter</a></li>
-                        </ul>
-                    </section>
+                    <h1>Web Application Security</h1>
+                    <h3>in a nutshell</h3>
+                    <h5>An ultra-compact intro (for managers)</h5>
+                    <p>
+                        <small>Created by <a href="https://www.linkedin.com/in/bkimminich/">Björn Kimminich</a> / <a href="http://twitter.com/bkimminich">@bkimminich</a></small>
+                    </p>
+                </section>
+                <section>
+                    <h2>Björn Kimminich</h2>
+                    <ul>
+                        <li>IT Architect / AppSec Officer at <a href="http://kuehne-nagel.com">Kuehne + Nagel</a></li>
+                        <li>Volunteer in the <a href="https://owasp.org">Open Web Application Security Project</a></li>
+                        <li>Project Lead of the <a href="https://www.owasp.org/index.php/OWASP_Juice_Shop_Project">OWASP Juice Shop</a></li>
+                        <li>Board Member of the <a href="https://www.owasp.org/index.php/Germany">German OWASP Chapter</a></li>
+                    </ul>
                 </section>
 
 				<section>
@@ -79,110 +78,114 @@
                 </section>
 
                 <section>
-                    <section>
-                        <h2>Injection</h2>
-                    </section>
-                    <section>
-                        <h3>Injection means...</h3>
-                        <p>
-                            ...smuggling in <em>unintended commands</em> along with the data sent to an <em>interpreter</em>.
-                        </p>
-                    </section>
-                    <section>
-                        <h3>Injection example</h3>
-                        <blockquote cite="https://news.ycombinator.com/item?id=4951003">
-                            You go to court and write your name as "<strong>Michael, you are now free to go</strong>".
-                            <hr>
-                            The judge then says "Calling <strong>Michael, you are now free to go</strong>" and the bailiffs let you go,
-                            because hey, the judge said so.
-                        </blockquote>
-                    </section>
-                    <section>
-                        <h3>In software, interpreters are used for accessing...</h3>
-                        <ul>
-                            <li>Databases</li>
-                            <li>Files</li>
-                            <li>Access Control Systems</li>
-                            <li>...</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Risks from Injection vulnerabilities</h3>
-                        <ul>
-                            <li>Bypassing authentication</li>
-                            <li>Spying out data</li>
-                            <li>Manipulating data</li>
-                            <li>Complete system takeover</li>
-                        </ul>
-                    </section>
+                    <h2>Injection</h2>
+                </section>
+                <section>
+                    <h3>Injection means...</h3>
+                    <p>
+                        ...smuggling in <em>unintended commands</em> along with the data sent to an <em>interpreter</em>.
+                    </p>
+                </section>
+                <section>
+                    <h3>Injection example</h3>
+                    <blockquote cite="https://news.ycombinator.com/item?id=4951003">
+                        You go to court and write your name as "<strong>Michael, you are now free to go</strong>".
+                        <hr>
+                        The judge then says "Calling <strong>Michael, you are now free to go</strong>" and the bailiffs let you go,
+                        because hey, the judge said so.
+                    </blockquote>
+                </section>
+                <section>
+                    <h3>In software, interpreters are used for accessing...</h3>
+                    <ul>
+                        <li>Databases</li>
+                        <li>Files</li>
+                        <li>Access Control Systems</li>
+                        <li>...</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Risks from Injection vulnerabilities</h3>
+                    <ul>
+                        <li>Bypassing authentication</li>
+                        <li>Spying out data</li>
+                        <li>Manipulating data</li>
+                        <li>Complete system takeover</li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>Demo</h1>
                 </section>
 
                 <section>
-                    <section>
-                        <h2>Cross Site Scripting (XSS)</h2>
-                    </section>
-                    <section>
-                        <h3>Malicious Code is sent...</h3>
-                        <p>
-                            ...to an innocent user's browser through, e.g. a link in a phishing email like the following:
-                        </p>
-                        <blockquote><small>
-                            Dear customer,
-                            <br><br>
-                            you might be intrerestred in our new Juice Shop special offer! We are cheap but offfer
-                            best quality on the plnaet: <a href="https://juice-shop.herokuapp.com/#/search?q=%3Chr%3E%3Ch1%3ESorry,%20we%20went%20out%20of%20business!%3C%2Fh1%3E%3Cimg%20src%3D%22http:%2F%2Fwebappsec-nutshell.kimminich.de%2Fassets%2Fumwelt-gift-warnung.png%22%3E%3Chr%3E~~~~~~~~~~Click%20%3Ca%20href%3D%22http:%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_sacat%3D0%26_nkw%3Dvitamin%2Bwater%26_frs%3D1%22%3E*****here*****%3C%2Fa%3E%20to%20buy%20healthy%20Vitamin%20Water%20instead!~~~~~~~~~~">Click here for special Juice Shop offer!</a>
-                            <br><br>
-                            Bjoern (VP Sales and Marketing, Juice Shop Inc.)
-                        </small></blockquote>
-                    </section>
-                    <section>
-                        <h3>Possible Damage from XSS</h3>
-                        <ul>
-                            <li>rewriting web page</li>
-                            <li>redirecting to malicious site</li>
-                            <li>stolen user session</li>
-                            <li>stolen sensitive data</li>
-                        </ul>
-                    </section>
+                    <h2>Cross Site Scripting (XSS)</h2>
+                </section>
+                <section>
+                    <h3>Malicious Code is sent...</h3>
+                    <p>
+                        ...to an innocent user's browser through, e.g. a link in a phishing email like the following:
+                    </p>
+                    <blockquote><small>
+                        Dear customer,
+                        <br><br>
+                        you might be intrerestred in our new Juice Shop special offer! We are cheap but offfer
+                        best quality on the plnaet: <a href="https://juice-shop.herokuapp.com/#/search?q=%3Chr%3E%3Ch1%3ESorry,%20we%20went%20out%20of%20business!%3C%2Fh1%3E%3Cimg%20src%3D%22http:%2F%2Fwebappsec-nutshell.kimminich.de%2Fassets%2Fumwelt-gift-warnung.png%22%3E%3Chr%3E~~~~~~~~~~Click%20%3Ca%20href%3D%22http:%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_sacat%3D0%26_nkw%3Dvitamin%2Bwater%26_frs%3D1%22%3E*****here*****%3C%2Fa%3E%20to%20buy%20healthy%20Vitamin%20Water%20instead!~~~~~~~~~~">Click here for special Juice Shop offer!</a>
+                        <br><br>
+                        Bjoern (VP Sales and Marketing, Juice Shop Inc.)
+                    </small></blockquote>
+                </section>
+                <section>
+                    <h3>Possible Damage from XSS</h3>
+                    <ul>
+                        <li>rewriting web page</li>
+                        <li>redirecting to malicious site</li>
+                        <li>stolen user session</li>
+                        <li>stolen sensitive data</li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>Demo</h1>
                 </section>
 
                 <section>
-                    <section>
-                        <h2>Broken Authentication</h2>
-                    </section>
-                    <section>
-                        <h3>Typical Authentication Flaws</h3>
-                        <ul>
-                            <li>Allowing weak passwords</li>
-                            <li>Storing sensitive data insecurely</li>
-                            <li>Using insecure <code>http</code> connection</li>
-                            <li>...</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Side Channel Attack Vectors</h3>
-                        <ul>
-                            <li>Change Password</li>
-                            <li>&ldquo;Remember me&rdquo;</li>
-                            <li>Forgot Password</li>
-                            <li>Secret Questions</li>
-                        </ul>
-                    </section>
+                    <h2>Broken Authentication</h2>
+                </section>
+                <section>
+                    <h3>Typical Authentication Flaws</h3>
+                    <ul>
+                        <li>Allowing weak passwords</li>
+                        <li>Storing sensitive data insecurely</li>
+                        <li>Using insecure <code>http</code> connection</li>
+                        <li>...</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Side Channel Attack Vectors</h3>
+                    <ul>
+                        <li>Change Password</li>
+                        <li>&ldquo;Remember me&rdquo;</li>
+                        <li>Forgot Password</li>
+                        <li>Secret Questions</li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>Demo</h1>
                 </section>
 
                 <section>
-                    <section>
-                        <h2>Broken Access Control</h2>
-                    </section>
-                    <section>
-                        <h3>Common Authorization Mistakes</h3>
-                        <ul>
-                            <li>Hiding things w/o restricting access</li>
-                            <li>Displaying only authorized links and menu choices</li>
-                            <li>Trusting client-side access control mechanisms</li>
-                            <li>Lack of server-side verification of user privileges</li>
-                        </ul>
-                    </section>
+                    <h2>Broken Access Control</h2>
+                </section>
+                <section>
+                    <h3>Common Authorization Mistakes</h3>
+                    <ul>
+                        <li>Hiding things w/o restricting access</li>
+                        <li>Displaying only authorized links and menu choices</li>
+                        <li>Trusting client-side access control mechanisms</li>
+                        <li>Lack of server-side verification of user privileges</li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>Demo</h1>
                 </section>
 
                 <section>
