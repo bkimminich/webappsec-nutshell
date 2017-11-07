@@ -45,8 +45,8 @@
 			<div class="slides">
                 <section>
                     <h1>Web Application Security</h1>
-                    <h3>in a nutshell</h3>
-                    <h5>An ultra-compact intro (for managers)</h5>
+                    <h3>in a 🌰shell</h3>
+                    <h5>An ultra-compact intro (for managers👨‍💼)</h5>
                     <p>
                         <small>Created by <a href="https://www.linkedin.com/in/bkimminich/">Björn Kimminich</a> / <a href="http://twitter.com/bkimminich">@bkimminich</a></small>
                     </p>
@@ -62,41 +62,68 @@
                 </section>
 
 				<section>
-                    <h2>Famous last words...</h2>
-                    <blockquote>
+                    <h2>🤐 Famous last words...</h2>
+                    <blockquote class="fragment">
                         &ldquo;Nobody would bother to hack us.&rdquo;
                     </blockquote>
-                    <blockquote>
+                    <blockquote class="fragment">
                         &ldquo;Our network firewall will keep us safe.&rdquo;
                     </blockquote>
-                    <blockquote>
+                    <blockquote class="fragment">
                         &ldquo;We will add security to the system later.&rdquo;
                     </blockquote>
-                    <blockquote>
-                        &ldquo;What's the worst that could actually happen?&rdquo;
+                    <blockquote class="fragment">
+                        &ldquo;What's the worst that could happen?&rdquo;
                     </blockquote>
                 </section>
 
                 <section>
-                    <h2>Injection</h2>
+                    <h2>🤔 What is a Vulnerability?</h2>
+                    <blockquote class="fragment" cite="https://en.wikipedia.org/wiki/Vulnerability_(computing)#Definitions">
+                        A flaw or weakness in system security procedures, design, implementation, or internal controls that could […]
+                        result in a security breach or a violation of the system's security policy.
+                    </blockquote>
+                </section>
+
+                <section>
+                    <h2>🤔 What is an Exploit?</h2>
+                    <blockquote class="fragment" cite="https://en.wikipedia.org/wiki/Exploit_(computer_security) ">
+                        A piece of software, a chunk of data, or a sequence of commands that takes advantage of a bug or
+                        vulnerability to cause unintended or unanticipated behavior to occur on computer software, hardware,
+                        or something electronic (usually computerized).
+                    </blockquote>
+                </section>
+
+                <section>
+                    <h2>🤔 Who are the Attackers?</h2>
+                    <ul>
+                        <li class="fragment">👶 Script Kiddies</li>
+                        <li class="fragment">🌱 Hacktivists</li>
+                        <li class="fragment">💰 Organized Crime</li>
+                        <li class="fragment">👛 Corrupt / 😡 Disgruntled Employees</li>
+                        <li class="fragment">🏭 Competitors</li>
+                        <li class="fragment">🦅 Nation States</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>💉 Injection</h2>
+                    <blockquote class="fragment">
+                        Smuggling in <em>unintended commands</em> along with the data sent to an <em>interpreter</em>.
+                    </blockquote>
                 </section>
                 <section>
-                    <h3>Injection means...</h3>
-                    <p>
-                        ...smuggling in <em>unintended commands</em> along with the data sent to an <em>interpreter</em>.
-                    </p>
-                </section>
-                <section>
-                    <h3>Injection example</h3>
+                    <h3>👮 ‍Injection example</h3>
                     <blockquote cite="https://news.ycombinator.com/item?id=4951003">
                         You go to court and write your name as "<strong>Michael, you are now free to go</strong>".
-                        <hr>
+                    </blockquote>
+                    <blockquote class="fragment">
                         The judge then says "Calling <strong>Michael, you are now free to go</strong>" and the bailiffs let you go,
                         because hey, the judge said so.
                     </blockquote>
                 </section>
                 <section>
-                    <h3>In software, interpreters are used for accessing...</h3>
+                    <h3>💻 In software, interpreters are used for accessing...</h3>
                     <ul>
                         <li>Databases</li>
                         <li>Files</li>
@@ -105,7 +132,7 @@
                     </ul>
                 </section>
                 <section>
-                    <h3>Risks from Injection vulnerabilities</h3>
+                    <h3>🚨 Risks from Injection vulnerabilities</h3>
                     <ul>
                         <li>Bypassing authentication</li>
                         <li>Spying out data</li>
@@ -114,14 +141,14 @@
                     </ul>
                 </section>
                 <section>
-                    <h1>Demo</h1>
+                    <h1>🎦 Demo</h1>
                 </section>
 
                 <section>
-                    <h2>Cross Site Scripting (XSS)</h2>
+                    <h2>📜 Cross Site Scripting (XSS)</h2>
                 </section>
                 <section>
-                    <h3>Malicious Code is sent...</h3>
+                    <h3>💀 Malicious Code is sent...</h3>
                     <p>
                         ...to an innocent user's browser through, e.g. a link in a phishing email like the following:
                     </p>
@@ -133,9 +160,17 @@
                         <br><br>
                         Bjoern (VP Sales and Marketing, Juice Shop Inc.)
                     </small></blockquote>
+                    <!--<blockquote><small>
+                        Dear customer,
+                        <br><br>
+                        you might be intrerestred in our new KN SwagLOG special offer! We are cheap but offfer
+                        best quality on the plnaet: <a target="_blank" href="http://localhost:3000/#/search?q=%3Chr%3E%3Ch1%3ESorry,%20we%20went%20out%20of%20business!%3C%2Fh1%3E%3Cimg%20src%3D%22http:%2F%2Fwebappsec-nutshell.kimminich.de%2Fassets%2Fumwelt-gift-warnung.png%22%3E%3Chr%3E~~~~~~~~~~Click%20%3Ca%20href%3D%22http:%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_sacat%3D0%26_nkw%3Dkuehne%2Bnagel%26_frs%3D1%22%3E*****here*****%3C%2Fa%3E%20to%20buy%20quality%20merch%20instead!~~~~~~~~~~">Click here for special KN SwagLOG offer!</a>
+                        <br><br>
+                        Bjorn (VP Sales and Marketing, KN SwagLOG Inc.)
+                    </small></blockquote>-->
                 </section>
                 <section>
-                    <h3>Possible Damage from XSS</h3>
+                    <h3>🚒 Possible Damage from XSS</h3>
                     <ul>
                         <li>rewriting web page</li>
                         <li>redirecting to malicious site</li>
@@ -144,14 +179,14 @@
                     </ul>
                 </section>
                 <section>
-                    <h1>Demo</h1>
+                    <h1>🎦 Demo</h1>
                 </section>
 
                 <section>
-                    <h2>Broken Authentication</h2>
+                    <h2>🔑 Broken Authentication</h2>
                 </section>
                 <section>
-                    <h3>Typical Authentication Flaws</h3>
+                    <h3>🤦‍ Typical Authentication Flaws</h3>
                     <ul>
                         <li>Allowing weak passwords</li>
                         <li>Storing sensitive data insecurely</li>
@@ -160,7 +195,7 @@
                     </ul>
                 </section>
                 <section>
-                    <h3>Side Channel Attack Vectors</h3>
+                    <h3>🏹 Side Channel Attack Vectors</h3>
                     <ul>
                         <li>Change Password</li>
                         <li>&ldquo;Remember me&rdquo;</li>
@@ -169,14 +204,14 @@
                     </ul>
                 </section>
                 <section>
-                    <h1>Demo</h1>
+                    <h1>🎦 Demo</h1>
                 </section>
 
                 <section>
-                    <h2>Broken Access Control</h2>
+                    <h2>🚪 Broken Access Control</h2>
                 </section>
                 <section>
-                    <h3>Common Authorization Mistakes</h3>
+                    <h3>🔓 Common Authorization Mistakes</h3>
                     <ul>
                         <li>Hiding things w/o restricting access</li>
                         <li>Displaying only authorized links and menu choices</li>
@@ -185,19 +220,17 @@
                     </ul>
                 </section>
                 <section>
-                    <h1>Demo</h1>
+                    <h1>🎦 Demo</h1>
                 </section>
 
                 <section>
-                    <section>
-                        <h1>Q&A</h1>
-                    </section>
-                    <section>
-                        <h2>Credits</h2>
-                            <p>Presentation created with <a href="https://github.com/hakimel/reveal.js">reveal.js</a></p><small>The HTML Presentation Framework</small>
-                            <p>Based on free material provided by <a href="https://owasp.org">OWASP</a></p><small>The Open Web Application Security Project</small>
-                            <p>Background image based on <a href="http://sephiroth-kmfdm.deviantart.com/art/Digital-Shodan-56013493">Digital Shodan</a></p><small>by <a href="http://sephiroth-kmfdm.deviantart.com/">sephiroth-kmfdm</a></small>
-                    </section>
+                    <h1>❓ Q&A</h1>
+                </section>
+                <section>
+                    <h2>Credits</h2>
+                        <p>Presentation created with <a href="https://github.com/hakimel/reveal.js">reveal.js</a></p><small>The HTML Presentation Framework</small>
+                        <p>Based on free material provided by <a href="https://owasp.org">OWASP</a></p><small>The Open Web Application Security Project</small>
+                        <p>Background image based on <a href="http://sephiroth-kmfdm.deviantart.com/art/Digital-Shodan-56013493">Digital Shodan</a></p><small>by <a href="http://sephiroth-kmfdm.deviantart.com/">sephiroth-kmfdm</a></small>
                 </section>
 
 				<section>
