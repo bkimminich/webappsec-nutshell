@@ -44,11 +44,11 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
                 <section>
-                    <h2>Web Application Security</h2>
+                    <h1>Web Application Security</h1>
                     <h3>in a 🌰shell</h3>
                     <h5>An ultra-compact intro</h5>
                     <p>
-                        <small>Created by <a href="https://www.linkedin.com/in/bkimminich/">Björn Kimminich</a> / <a href="http://twitter.com/bkimminich">@bkimminich</a></small>
+                        <small>Copyright (c) <a href="https://www.linkedin.com/in/bkimminich/">Björn Kimminich</a> / <a href="http://twitter.com/bkimminich">@bkimminich</a></small>
                     </p>
                 </section>
                 <section>
@@ -116,13 +116,13 @@
                     </blockquote>
                 </section>
                 <section>
-                    <h3>👮 ‍Injection example</h3>
+                    <h3>👨‍⚖️ ‍Injection example</h3>
                     <blockquote cite="https://news.ycombinator.com/item?id=4951003">
-                        You go to court and write your name as "<strong>Michael, you are now free to go</strong>".
+                        You go to court and write your name as "<strong>Michael<span class="fragment" style="color: tomato">, you are now free to go</span></strong>".
                     </blockquote>
                     <blockquote class="fragment">
-                        The judge then says "Calling <strong>Michael, you are now free to go</strong>" and the bailiffs let you go,
-                        because hey, the judge said so.
+                        The judge then says "Calling <strong>Michael<span style="color: tomato;">, you are now free to go</span></strong>" <span class="fragment">and the bailiffs let you go,
+                        because hey, the judge said so.</span>
                     </blockquote>
                 </section>
                 <section>
@@ -183,9 +183,10 @@ SELECT * FROM books WHERE title LIKE '%tangled web%'
                 </section>
                     <section>
                         <h3>🗡️ Attack Examples</h3>
-                        <small>❌ This will <strong>not</strong> work unless both result sets coincidentally have equal number of columns:</small>
+                        <small>❌ This will <strong>not</strong> work unless both result sets coincidentally have an equal number of columns:</small>
                         <pre><code class="sql" data-trim>
-SELECT * FROM books WHERE title LIKE '%' UNION SELECT * FROM users--%'
+SELECT * FROM books WHERE title LIKE '%'
+UNION SELECT * FROM users--%'
                         </code></pre>
                         <p>
                             <span class="fragment" data-fragment-index="1">❌</span>
@@ -194,10 +195,12 @@ SELECT * FROM books WHERE title LIKE '%' UNION SELECT * FROM users--%'
                             <span class="fragment" data-fragment-index="1">Probing for right number of result set columns:</span>
                         </p>
                         <pre class="fragment" data-fragment-index="1"><code class="sql" data-trim>
-SELECT * FROM books WHERE title LIKE '%' UNION SELECT 1 FROM users--%'
+SELECT * FROM books WHERE title LIKE '%'
+UNION SELECT 1 FROM users--%'
                         </code></pre>
                         <pre class="fragment" data-fragment-index="2"><code class="sql" data-trim>
-SELECT * FROM books WHERE title LIKE '%' UNION SELECT 1,2 FROM users--%'
+SELECT * FROM books WHERE title LIKE '%'
+UNION SELECT 1,2 FROM users--%'
                         </code></pre>
                         <pre class="fragment" data-fragment-index="3"><code class="sql" data-trim>
 SELECT * FROM books WHERE title LIKE '%'
@@ -391,20 +394,19 @@ http://document-warehou.se/landingpage?content=index.html
                     <h1>❓ Q&A</h1>
                 </section>
                 <section>
-                    <h2>Credits</h2>
+                    <h2>👏 Credits</h2>
                         <p>Presentation created with <a href="https://github.com/hakimel/reveal.js">reveal.js</a></p><small>The HTML Presentation Framework</small>
                         <p>Based on free material provided by <a href="https://owasp.org">OWASP</a></p><small>The Open Web Application Security Project</small>
                         <p>Background image based on <a href="http://sephiroth-kmfdm.deviantart.com/art/Digital-Shodan-56013493">Digital Shodan</a></p><small>by <a href="http://sephiroth-kmfdm.deviantart.com/">sephiroth-kmfdm</a></small>
                 </section>
 
 				<section>
-					<h1>THE END</h1>
-                    <p>Copyright (C) 2018 <a href="https://www.linkedin.com/in/bkimminich/">Björn Kimminich</a> / <a href="http://twitter.com/bkimminich">@bkimminich</a></p>
-                    <img src="assets/cc_by-nc-nd_4.0.png" class="no-box">
+					<h1>The🔚</h1>
+                    <p>Copyright (c) <a href="https://www.linkedin.com/in/bkimminich/">Björn Kimminich</a> / <a href="http://twitter.com/bkimminich">@bkimminich</a></p>
                     <p>
-                        <small><small>
-                            This work is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
-                        </small></small>
+                        <small>
+                            <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+                        </small>
                     </p>
 				</section>
 
