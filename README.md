@@ -41,4 +41,9 @@ An ultra-compact intro (or refresher) to Web Application Security derived from m
 
 ## Copyright
 
-Copyright (C) 2015 Bjoern Kimminich, http://kimminich.de
+Copyright (c) by Bjoern Kimminich, http://kimminich.de
+
+[![CC BY-NC-ND 4.0](assets/cc_by-nc-nd_4.0.png)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
+
+This work is licensed under a
+[Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nc-nd/4.0/).

